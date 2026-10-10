@@ -1,0 +1,16 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jammer-desktop", "Jammer-desktop\Jammer-desktop.csproj", "{25E60109-7687-4849-AA70-8B2F11B7E53B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{25E60109-7687-4849-AA70-8B2F11B7E53B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{25E60109-7687-4849-AA70-8B2F11B7E53B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{25E60109-7687-4849-AA70-8B2F11B7E53B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{25E60109-7687-4849-AA70-8B2F11B7E53B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
