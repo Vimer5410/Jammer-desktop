@@ -1,0 +1,97 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="Jammer_desktop.Views.HomeView">
+    
+    
+    <Grid RowDefinitions="*,50,150">
+        
+        <Grid Grid.Row="0">
+            <Button Content="Connect"
+                    CornerRadius="100"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    HorizontalContentAlignment="Center"
+                    VerticalContentAlignment="Center"
+                    Height="140"
+                    Width="140"
+                    FontSize="20"
+                    FontWeight="SemiBold"
+                    Cursor="hand">
+
+                <Button.Resources>
+                    <SolidColorBrush x:Key="ButtonBackground" Color="#C9444A"/>
+                    <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="#D95A5F"/>
+                    <SolidColorBrush x:Key="ButtonBackgroundPressed" Color="#FF9F73"/>
+
+                    <SolidColorBrush x:Key="ButtonBorderBrush" Color="#C9444A"/>
+                    <SolidColorBrush x:Key="ButtonBorderBrushPointerOver" Color="#D95A5F"/>
+                    <SolidColorBrush x:Key="ButtonBorderBrushPressed" Color="#FF9F73"/>
+
+                    <SolidColorBrush x:Key="ButtonForeground" Color="#FFFFFF"/>
+                    <SolidColorBrush x:Key="ButtonForegroundPointerOver" Color="#FFFFFF"/>
+                    <SolidColorBrush x:Key="ButtonForegroundPressed" Color="#1A1B21"/>
+                </Button.Resources>
+
+            </Button>
+
+        </Grid>
+
+        <Grid Grid.Row="1">
+            <TextBox Text="77.221.140.145"
+                     Width="220"
+                     Height="40"
+                     CornerRadius="12"
+                     FontFamily="Cascadia Mono, Consolas, monospace"
+                     HorizontalContentAlignment="Center"
+                     VerticalContentAlignment="Center"
+                     HorizontalAlignment="Center"
+                     VerticalAlignment="Center">
+                <TextBox.Resources>
+
+                    <!-- Фон обычный, при наведении и в фокусе -->
+                    <SolidColorBrush x:Key="TextControlBackground" Color="#22232A"></SolidColorBrush>
+                    <SolidColorBrush x:Key="TextControlBackgroundPointerOver" Color="#272832"></SolidColorBrush>
+                    <SolidColorBrush x:Key="TextControlBackgroundFocused" Color="#2A2B35"></SolidColorBrush>
+
+
+                    <!-- Рамка обычная, при наведении и в фокусе -->
+                    <SolidColorBrush x:Key="TextControlBorderBrush" Color="#2E2F38"></SolidColorBrush>
+                    <SolidColorBrush x:Key="TextControlBorderBrushPointerOver" Color="#3C3D49"></SolidColorBrush>
+                    <SolidColorBrush x:Key="TextControlBorderBrushFocused" Color="#C9444A"></SolidColorBrush>
+
+
+                    <!-- Текст обычный, при наведении и в фокусе -->
+                    <SolidColorBrush x:Key="TextControlForeground" Color="#E6E8EE"></SolidColorBrush>
+                    <SolidColorBrush x:Key="TextControlForegroundPointerOver" Color="#E6E8EE"></SolidColorBrush>
+                    <SolidColorBrush x:Key="TextControlForegroundFocused" Color="#FFFFFF"></SolidColorBrush>
+
+
+                </TextBox.Resources>
+            </TextBox>
+
+        </Grid>
+
+        <Grid Grid.Row="2">
+            <Border Background="#121318"
+                    BorderBrush="#2E2F38"
+                    BorderThickness="1"
+                    CornerRadius="0,0,15,15"
+                    Margin="0,25,0,6"
+                    Padding="12,8">
+                <TextBlock Text="Консольный вывод....."
+                           Foreground="#7F8596"
+                           FontFamily="Cascadia Mono, Consolas, monospace"
+                           FontSize="12"
+                           TextWrapping="Wrap"
+                           VerticalAlignment="Top"
+                           HorizontalAlignment="Left">
+
+                </TextBlock>
+            </Border>
+        </Grid>
+        
+    </Grid>
+</UserControl>

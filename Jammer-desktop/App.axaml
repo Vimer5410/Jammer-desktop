@@ -2,6 +2,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              x:Class="Jammer_desktop.App"
              xmlns:local="using:Jammer_desktop"
+             xmlns:materialIcons="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
              RequestedThemeVariant="Dark">
              <!-- "Default" ThemeVariant follows system theme variant. "Dark" or "Light" are other available options. -->
 
@@ -10,6 +11,7 @@
     </Application.DataTemplates>
 
     <Application.Styles>
+        <materialIcons:MaterialIconStyles />
         <FluentTheme />
     </Application.Styles>
 </Application>
