@@ -76,7 +76,7 @@
                             Cursor="hand"
                             Click="SettingsButton_OnClick">
                         
-                        <PathIcon Data="{pia:IconGeometry Icon=gear_six, IconType=bold}" Height="27" Width="27" Foreground="#6B6F80" x:Name="SettingsIcon"></PathIcon>
+                        <PathIcon Data="{pia:IconGeometry Icon=gear_fine, IconType=bold}" Height="27" Width="27" Foreground="#6B6F80" x:Name="SettingsIcon"></PathIcon>
                         
                         <Button.Resources>
                             <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="Transparent"/>

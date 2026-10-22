@@ -2,7 +2,126 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:pia="clr-namespace:PhosphorIconsAvalonia.Markup;assembly=PhosphorIconsAvalonia"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="Jammer_desktop.Views.SettingsView">
-    Welcome to Avalonia!
+
+    <UserControl.Styles>
+        <Style Selector="PathIcon.lead">
+            <Setter Property="Foreground" Value="#A9AEBE"/>
+        </Style>
+        
+        <Style Selector="PathIcon.caret">
+            <Setter Property="Foreground" Value="#6B6F80"/>
+        </Style>
+        
+        <Style Selector="Button:pointerover PathIcon.lead">
+            <Setter Property="Foreground" Value="#E6E8EE"/>
+        </Style>
+        
+        <Style Selector="Button:pointerover PathIcon.caret">
+            <Setter Property="Foreground" Value="#E6E8EE"/>
+        </Style>
+        
+        <Style Selector="Button:pressed PathIcon.caret">
+            <Setter Property="Foreground" Value="#FF9F73"/>
+        </Style>
+        
+    </UserControl.Styles>
+
+    <UserControl.Resources>
+        <SolidColorBrush x:Key="ButtonForeground" Color="#E6E8EE"/>
+        <SolidColorBrush x:Key="ButtonForegroundPointerOver" Color="#FFFFFF"/>
+        <SolidColorBrush x:Key="ButtonForegroundPressed" Color="#FFFFFF"/>
+    </UserControl.Resources>
+
+    <StackPanel Margin="10,10,10,0" Spacing="10">
+
+        <Button Height="60" CornerRadius="8" Padding="16,0" Cursor="hand"
+                HorizontalAlignment="Stretch"
+                HorizontalContentAlignment="Stretch"
+                VerticalContentAlignment="Center">
+            
+            <Grid ColumnDefinitions="Auto,*,Auto">
+                
+                <PathIcon Grid.Column="0" Classes="lead"
+                          Data="{pia:IconGeometry Icon=hard_drives, IconType=regular}"
+                          Width="23" Height="23"/>
+                
+                <TextBlock Grid.Column="1" Text="Self-Hosted"
+                           FontSize="15" FontWeight="Medium"
+                           VerticalAlignment="Center" Margin="14,0,0,0"/>
+                
+                <PathIcon Grid.Column="2" Classes="caret"
+                          Data="{pia:IconGeometry Icon=caret_right, IconType=regular}"
+                          Width="16" Height="16"/>
+            </Grid>
+        </Button>
+
+        <Button Height="60" CornerRadius="8" Padding="16,0" Cursor="hand"
+                HorizontalAlignment="Stretch"
+                HorizontalContentAlignment="Stretch"
+                VerticalContentAlignment="Center">
+            
+            <Grid ColumnDefinitions="Auto,*,Auto">
+                <PathIcon Grid.Column="0" Classes="lead"
+                          Data="{pia:IconGeometry Icon=command, IconType=regular}"
+                          Width="23" Height="23"/>
+                
+                <TextBlock Grid.Column="1" Text="Общее"
+                           FontSize="15" FontWeight="Medium"
+                           VerticalAlignment="Center" Margin="14,0,0,0"/>
+                
+                <PathIcon Grid.Column="2" Classes="caret"
+                          Data="{pia:IconGeometry Icon=caret_right, IconType=regular}"
+                          Width="16" Height="16"/>
+            </Grid>
+        </Button>
+
+        
+        
+        <Button Height="60" CornerRadius="8" Padding="16,0" Cursor="hand"
+                HorizontalAlignment="Stretch"
+                HorizontalContentAlignment="Stretch"
+                VerticalContentAlignment="Center">
+            
+            <Grid ColumnDefinitions="Auto,*,Auto">
+                <PathIcon Grid.Column="0" Classes="lead"
+                          Data="{pia:IconGeometry Icon=scroll, IconType=regular}"
+                          Width="23" Height="23"/>
+                
+                <TextBlock Grid.Column="1" Text="Журнал"
+                           FontSize="15" FontWeight="Medium"
+                           VerticalAlignment="Center" Margin="14,0,0,0"/>
+                
+                <PathIcon Grid.Column="2" Classes="caret"
+                          Data="{pia:IconGeometry Icon=caret_right, IconType=regular}"
+                          Width="16" Height="16"/>
+            </Grid>
+        </Button>
+
+        
+        
+        <Button Height="60" CornerRadius="8" Padding="16,0" Cursor="hand"
+                HorizontalAlignment="Stretch"
+                HorizontalContentAlignment="Stretch"
+                VerticalContentAlignment="Center">
+            
+            <Grid ColumnDefinitions="Auto,*,Auto">
+                <PathIcon Grid.Column="0" Classes="lead"
+                          Data="{pia:IconGeometry Icon=github_logo, IconType=regular}"
+                          Width="23" Height="23"/>
+                
+                <TextBlock Grid.Column="1" Text="О Jammer Protocol"
+                           FontSize="15" FontWeight="Medium"
+                           VerticalAlignment="Center" Margin="14,0,0,0"/>
+                
+                <PathIcon Grid.Column="2" Classes="caret"
+                          Data="{pia:IconGeometry Icon=caret_right, IconType=regular}"
+                          Width="16" Height="16"/>
+            </Grid>
+        </Button>
+
+    </StackPanel>
+
 </UserControl>
