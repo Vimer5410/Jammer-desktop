@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AvaloniaProject">
+    <option name="projectPerEditor">
+      <map>
+        <entry key="Jammer-desktop/Views/GeneralView.axaml" value="Jammer-desktop/Jammer-desktop.csproj" />
+        <entry key="Jammer-desktop/Views/GeneralViewModel.axaml" value="Jammer-desktop/Jammer-desktop.csproj" />
+        <entry key="Jammer-desktop/Views/LogViewModel.axaml" value="Jammer-desktop/Jammer-desktop.csproj" />
+        <entry key="Jammer-desktop/Views/MainWindow.axaml" value="Jammer-desktop/Jammer-desktop.csproj" />
+        <entry key="Jammer-desktop/Views/SelfHostedView.axaml" value="Jammer-desktop/Jammer-desktop.csproj" />
+        <entry key="Jammer-desktop/Views/SelfHostedViewModel.axaml" value="Jammer-desktop/Jammer-desktop.csproj" />
+        <entry key="Jammer-desktop/Views/SettingsView.axaml" value="Jammer-desktop/Jammer-desktop.csproj" />
+      </map>
+    </option>
+  </component>
+</project>
