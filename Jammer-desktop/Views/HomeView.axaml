@@ -19,6 +19,7 @@
                     Width="140"
                     FontSize="20"
                     FontWeight="SemiBold"
+                    Margin="0,40,0,0"
                     Cursor="hand">
 
                 <Button.Resources>

@@ -26,7 +26,7 @@
         </Style>
         
         <Style Selector="Button:pressed PathIcon.caret">
-            <Setter Property="Foreground" Value="#FF9F73"/>
+            <Setter Property="Foreground" Value="#C9444A"/>
         </Style>
         
     </UserControl.Styles>
@@ -37,12 +37,14 @@
         <SolidColorBrush x:Key="ButtonForegroundPressed" Color="#FFFFFF"/>
     </UserControl.Resources>
 
+
     <Grid>
         
         <ContentControl Content="{Binding CurrentPage}" />
         
-        <StackPanel Margin="10,10,10,0" Spacing="10" IsVisible="{Binding CurrentPage, Converter={x:Static ObjectConverters.IsNull}}">
-        
+        <StackPanel Margin="10,50,10,0" Spacing="10" IsVisible="{Binding CurrentPage, Converter={x:Static ObjectConverters.IsNull}}">
+
+
         <Button Height="60" CornerRadius="8" Padding="16,0" Cursor="hand"
                 HorizontalAlignment="Stretch"
                 HorizontalContentAlignment="Stretch"

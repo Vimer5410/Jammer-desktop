@@ -7,12 +7,15 @@
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="Jammer_desktop.Views.MainWindow"
         x:DataType="vm:MainViewModel"
-        Height="500"
+        Height="535"
         Width="350"
         Background="#1A1B21"
         CanResize="False"
         Icon="/Assets/jammer-vpn-dark.ico"
-        Title="Jammer_desktop">
+        Title="JammerVPN"
+        Foreground="#6B6F80"
+        ExtendClientAreaToDecorationsHint="True"
+        ExtendClientAreaTitleBarHeightHint="32">
 
     <Design.DataContext>
         <!-- This only sets the DataContext for the previewer in an IDE,
