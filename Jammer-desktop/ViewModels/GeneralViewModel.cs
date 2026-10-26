@@ -1,6 +1,6 @@
 ﻿namespace Jammer_desktop.ViewModels;
 
-public class GeneralViewModel
+public class GeneralViewModel : ViewModelBase
 {
     
 }

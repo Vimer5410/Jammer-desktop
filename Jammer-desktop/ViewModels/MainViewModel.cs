@@ -13,5 +13,7 @@ public partial class MainViewModel : ViewModelBase
     public MainViewModel() => _currentPage = _home;
 
     [RelayCommand] public void RouteToHomePage() => CurrentPage = _home;
+    
     [RelayCommand] public void RouteToSettingsPage() => CurrentPage = _settings;
+
 }

@@ -1,13 +1,21 @@
 ﻿using Avalonia;
 using Avalonia.Controls;
+using Avalonia.Interactivity;
 using Avalonia.Markup.Xaml;
+using Jammer_desktop.ViewModels;
 
-namespace Jammer-desktop.Views;
+namespace Jammer_desktop.Views;
 
 public partial class SelfHostedView : UserControl
 {
     public SelfHostedView()
     {
         InitializeComponent();
+    }
+
+    private void BackButton_OnClick(object? sender, RoutedEventArgs e)
+    {
+        var mainViewModel = (MainViewModel)TopLevel.GetTopLevel(this)!.DataContext!;
+        mainViewModel.RouteToSettingsPage();
     }
 }

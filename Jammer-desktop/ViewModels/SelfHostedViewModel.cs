@@ -1,6 +1,6 @@
 ﻿namespace Jammer_desktop.ViewModels;
 
-public class SelfHostedViewModel
+public class SelfHostedViewModel : ViewModelBase
 {
     
 }

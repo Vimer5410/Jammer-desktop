@@ -5,6 +5,8 @@
       <map>
         <entry key="Jammer-desktop/Views/GeneralView.axaml" value="Jammer-desktop/Jammer-desktop.csproj" />
         <entry key="Jammer-desktop/Views/GeneralViewModel.axaml" value="Jammer-desktop/Jammer-desktop.csproj" />
+        <entry key="Jammer-desktop/Views/HomeView.axaml" value="Jammer-desktop/Jammer-desktop.csproj" />
+        <entry key="Jammer-desktop/Views/LogView.axaml" value="Jammer-desktop/Jammer-desktop.csproj" />
         <entry key="Jammer-desktop/Views/LogViewModel.axaml" value="Jammer-desktop/Jammer-desktop.csproj" />
         <entry key="Jammer-desktop/Views/MainWindow.axaml" value="Jammer-desktop/Jammer-desktop.csproj" />
         <entry key="Jammer-desktop/Views/SelfHostedView.axaml" value="Jammer-desktop/Jammer-desktop.csproj" />
