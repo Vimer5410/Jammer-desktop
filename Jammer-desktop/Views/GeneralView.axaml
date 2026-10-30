@@ -2,12 +2,161 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:markup="clr-namespace:PhosphorIconsAvalonia.Markup;assembly=PhosphorIconsAvalonia"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="Jammer_desktop.Views.GeneralView">
     
+    <UserControl.Styles>
+        
+        <Style Selector="ToggleSwitch">
+            <Setter Property="OnContent" Value=""/>
+            <Setter Property="OffContent" Value=""/>
+            <Setter Property="MinWidth" Value="0"/>
+            <Setter Property="Padding" Value="0"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="0,0,-12,0"/>
+        </Style>
+        
+        <Style Selector="Button:pressed PathIcon.caret">
+            <Setter Property="Foreground" Value="#C9444A"/>
+        </Style>
+    </UserControl.Styles>
     
-    <Grid>
-        <TextBlock>General</TextBlock>
-        <Button Content="Back" Click="BackButton_OnClick"></Button>
+    
+    <UserControl.Resources>
+        <SolidColorBrush x:Key="ToggleSwitchFillOff" Color="#2A2B35"/>
+        <SolidColorBrush x:Key="ToggleSwitchFillOffPointerOver" Color="#30313C"/>
+        <SolidColorBrush x:Key="ToggleSwitchFillOffPressed" Color="#33343F"/>
+        <SolidColorBrush x:Key="ToggleSwitchStrokeOff" Color="#4A4B57"/>
+        <SolidColorBrush x:Key="ToggleSwitchStrokeOffPointerOver" Color="#5A5B68"/>
+        <SolidColorBrush x:Key="ToggleSwitchStrokeOffPressed" Color="#5A5B68"/>
+        <SolidColorBrush x:Key="ToggleSwitchKnobFillOff" Color="#A9AEBE"/>
+        <SolidColorBrush x:Key="ToggleSwitchKnobFillOffPointerOver" Color="#E6E8EE"/>
+        <SolidColorBrush x:Key="ToggleSwitchKnobFillOffPressed" Color="#E6E8EE"/>
+        <SolidColorBrush x:Key="ToggleSwitchFillOn" Color="#C9444A"/>
+        <SolidColorBrush x:Key="ToggleSwitchFillOnPointerOver" Color="#D95A5F"/>
+        <SolidColorBrush x:Key="ToggleSwitchFillOnPressed" Color="#FF9F73"/>
+        <SolidColorBrush x:Key="ToggleSwitchStrokeOn" Color="#C9444A"/>
+        <SolidColorBrush x:Key="ToggleSwitchStrokeOnPointerOver" Color="#D95A5F"/>
+        <SolidColorBrush x:Key="ToggleSwitchStrokeOnPressed" Color="#FF9F73"/>
+        <SolidColorBrush x:Key="ToggleSwitchKnobFillOn" Color="#FFFFFF"/>
+        <SolidColorBrush x:Key="ToggleSwitchKnobFillOnPointerOver" Color="#FFFFFF"/>
+        <SolidColorBrush x:Key="ToggleSwitchKnobFillOnPressed" Color="#1A1B21"/>
+    </UserControl.Resources>
+    
+    
+    
+    <Grid RowDefinitions="70, 74, 74, 74, 74, *" Margin="0, 30,0,0">
+        
+        
+        <!-- Контейнер верхней кнопки Self-Hosted для возврата на предыдущую страницу -->
+        <Grid Grid.Row="0">
+            <Button Grid.Row="0" BorderBrush="Transparent"
+                    Height="50" Width="175" Margin="20,0,0,0"
+                    HorizontalAlignment="Left" VerticalAlignment="Center"
+                    Cursor="hand" Background="Transparent"
+                    CornerRadius="8"
+                    Padding="0"
+                    Click="BackButton_OnClick">
+            
+                <Button.Resources>
+                    <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="Transparent"/>
+                    <SolidColorBrush x:Key="ButtonBackgroundPressed" Color="Transparent"/>
+                    <SolidColorBrush x:Key="ButtonBorderBrushPointerOver" Color="Transparent"/>
+                </Button.Resources>
+            
+            
+                <Grid ColumnDefinitions="Auto, *">
+                    <PathIcon Grid.Column="0" Classes="caret" Data="{markup:IconGeometry Icon=caret_left, IconType=regular}"></PathIcon>
+                    <TextBlock Grid.Column="1" Text="Общее" FontWeight="Bold" FontSize="18" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0"></TextBlock>
+                </Grid>
+            </Button>
+        </Grid>
+        
+        
+        <Border Grid.Row="1" Height="64" CornerRadius="8" Margin="20,0,20,0"
+                Background="#22232A" BorderBrush="#2E2F38" BorderThickness="1" Padding="16,0">
+            
+            <Grid ColumnDefinitions="*,Auto">
+                
+                <StackPanel VerticalAlignment="Center" Spacing="2">
+                    <TextBlock Text="Запускать вместе с Windows"
+                               FontSize="15" FontWeight="Medium" Foreground="#E6E8EE"/>
+                    
+                    <TextBlock Text="автозапуск при входе в систему"
+                               FontSize="12" Foreground="#7F8596"/>
+                </StackPanel>
+                
+                <ToggleSwitch Grid.Column="1" IsChecked="False" Cursor="hand"
+                              OnContent="" OffContent="" MinWidth="0" Padding="0"
+                              VerticalAlignment="Center" Margin="0,0,-12,0"/>
+            </Grid>
+        </Border>
+        
+        
+        <Border Grid.Row="2" Height="64" CornerRadius="8" Margin="20,0,20,0"
+                Background="#22232A" BorderBrush="#2E2F38" BorderThickness="1" Padding="16,0">
+            
+            <Grid ColumnDefinitions="*,Auto">
+                
+                <StackPanel VerticalAlignment="Center" Spacing="2">
+                    <TextBlock Text="Сворачивать в трей"
+                               FontSize="15" FontWeight="Medium" Foreground="#E6E8EE"/>
+                    
+                    <TextBlock Text="Закрытие окна не отключает VPN"
+                               FontSize="12" Foreground="#7F8596"/>
+                </StackPanel>
+                
+                <ToggleSwitch Grid.Column="1" IsChecked="False" Cursor="hand"
+                              OnContent="" OffContent="" MinWidth="0" Padding="0"
+                              VerticalAlignment="Center" Margin="0,0,-12,0"/>
+            </Grid>
+        </Border>
+        
+        
+        <Border Grid.Row="3" Height="64" CornerRadius="8" Margin="20,0,20,0"
+                Background="#22232A" BorderBrush="#2E2F38" BorderThickness="1" Padding="16,0">
+            
+            <Grid ColumnDefinitions="*,Auto">
+                
+                <StackPanel VerticalAlignment="Center" Spacing="2">
+                    <TextBlock Text="Логирование"
+                               FontSize="15" FontWeight="Medium" Foreground="#E6E8EE"/>
+                    
+                    <TextBlock Text="Журнал работы приложения"
+                               FontSize="12" Foreground="#7F8596"/>
+                </StackPanel>
+                
+                <ToggleSwitch Grid.Column="1" IsChecked="False" Cursor="hand"
+                              OnContent="" OffContent="" MinWidth="0" Padding="0"
+                              VerticalAlignment="Center" Margin="0,0,-12,0"/>
+            </Grid>
+        </Border>
+        
+        <Border Grid.Row="4" Height="64" CornerRadius="8" Margin="20,0,20,0"
+                Background="#22232A" BorderBrush="#2E2F38" BorderThickness="1" Padding="16,0">
+            
+            <Grid ColumnDefinitions="*,Auto">
+                
+                <StackPanel VerticalAlignment="Center" Spacing="2">
+                    <TextBlock Text="Язык"
+                               FontSize="15" FontWeight="Medium" Foreground="#E6E8EE"/>
+                    
+                    <TextBlock Text="Язык работы приложения"
+                               FontSize="12" Foreground="#7F8596"/>
+                </StackPanel>
+                
+                <ComboBox Grid.Column="1" Width="40" Height="20" Foreground="#6B6F80"  Background="#22232A" BorderBrush="#2E2F38" >
+                    <ComboBoxItem Content="Русский"></ComboBoxItem>
+                    <ComboBoxItem Content="English"></ComboBoxItem>
+                    
+                    <ComboBox.Resources>
+                        <SolidColorBrush x:Key=""></SolidColorBrush>
+                    </ComboBox.Resources>
+                </ComboBox>
+            </Grid>
+        </Border>
+        
+        
     </Grid>
 </UserControl>

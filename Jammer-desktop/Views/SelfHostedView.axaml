@@ -2,11 +2,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:pia="clr-namespace:PhosphorIconsAvalonia.Markup;assembly=PhosphorIconsAvalonia"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="Jammer_desktop.Views.SelfHostedView">
     
-    <Grid>
-        <TextBlock>Self-Hosted</TextBlock>
-        <Button Content="Back" Click="BackButton_OnClick"></Button>
-    </Grid>
 </UserControl>

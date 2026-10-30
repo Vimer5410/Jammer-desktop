@@ -9,6 +9,7 @@ public partial class SettingsViewModel : ViewModelBase
     private readonly GeneralViewModel _general = new GeneralViewModel();
     private readonly LogViewModel _log = new LogViewModel();
     
+    
     [ObservableProperty] private ViewModelBase? _currentPage;
     
     [RelayCommand] public void RouteToSelfHostedPage() => CurrentPage = _selfHosted;
@@ -16,5 +17,9 @@ public partial class SettingsViewModel : ViewModelBase
     [RelayCommand] public void RouteToGeneralPage() => CurrentPage = _general;
 
     [RelayCommand] public void RouteToLogPage() => CurrentPage = _log;
-    
+
+    [RelayCommand]
+    public void RouteBack() => CurrentPage = null;
+
+
 }
