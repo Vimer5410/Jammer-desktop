@@ -6,4 +6,126 @@
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="Jammer_desktop.Views.SelfHostedView">
     
+    
+    <UserControl.Styles>
+        <Style Selector="Button:pressed PathIcon.caret">
+            <Setter Property="Foreground" Value="#C9444A"/>
+        </Style>
+    </UserControl.Styles>
+    
+    
+    <UserControl.Resources>
+        <!-- Фон обычный, при наведении и в фокусе -->
+        <SolidColorBrush x:Key="TextControlBackground" Color="#22232A"></SolidColorBrush>
+        <SolidColorBrush x:Key="TextControlBackgroundPointerOver" Color="#272832"></SolidColorBrush>
+        <SolidColorBrush x:Key="TextControlBackgroundFocused" Color="#2A2B35"></SolidColorBrush>
+
+
+        <!-- Рамка обычная, при наведении и в фокусе -->
+        <SolidColorBrush x:Key="TextControlBorderBrush" Color="#2E2F38"></SolidColorBrush>
+        <SolidColorBrush x:Key="TextControlBorderBrushPointerOver" Color="#3C3D49"></SolidColorBrush>
+        <SolidColorBrush x:Key="TextControlBorderBrushFocused" Color="#C9444A"></SolidColorBrush>
+
+
+        <!-- Текст обычный, при наведении и в фокусе -->
+        <SolidColorBrush x:Key="TextControlForeground" Color="#E6E8EE"></SolidColorBrush>
+        <SolidColorBrush x:Key="TextControlForegroundPointerOver" Color="#E6E8EE"></SolidColorBrush>
+        <SolidColorBrush x:Key="TextControlForegroundFocused" Color="#FFFFFF"></SolidColorBrush>
+    </UserControl.Resources>
+    
+    
+    
+    
+    <Grid RowDefinitions="70, 85, 85, 45, *" Margin="0, 30,0,0">
+        
+        
+        <!-- Контейнер верхней кнопки Self-Hosted для возврата на предыдущую страницу -->
+        <Grid Grid.Row="0">
+            <Button Grid.Row="0" BorderBrush="Transparent"
+                    Height="50" Width="175" Margin="20,0,0,0"
+                    HorizontalAlignment="Left" VerticalAlignment="Center"
+                    Cursor="hand" Background="Transparent"
+                    CornerRadius="8"
+                    Padding="0"
+                    Click="BackButton_OnClick">
+            
+                <Button.Resources>
+                    <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="Transparent"/>
+                    <SolidColorBrush x:Key="ButtonBackgroundPressed" Color="Transparent"/>
+                    <SolidColorBrush x:Key="ButtonBorderBrushPointerOver" Color="Transparent"/>
+                </Button.Resources>
+            
+            
+                <Grid ColumnDefinitions="Auto, *">
+                    <PathIcon Grid.Column="0" Classes="caret" Data="{pia:IconGeometry Icon=caret_left, IconType=regular}"></PathIcon>
+                    <TextBlock Grid.Column="1" Text="Self-Hosted" FontWeight="Bold" FontSize="18" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0"></TextBlock>
+                </Grid>
+            </Button>
+        </Grid>
+        
+        
+        
+        <!-- Контейнер с двумя полями ввода(ip адрес и ssh порт) -->
+        <Grid Grid.Row="1" ColumnDefinitions="*, Auto" Margin="20,0,20,0" ColumnSpacing="20">
+            <TextBlock Grid.Column="0" FontFamily="Cascadia Mono, Consolas, monospace" Text="Ip-адрес сервера"></TextBlock>
+            <TextBox Grid.Column="0" x:Name="IpTextBox" FontFamily="Cascadia Mono, Consolas, monospace" Height="45" CornerRadius="10" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"></TextBox>
+            
+            <TextBlock Grid.Column="1" FontFamily="Cascadia Mono, Consolas, monospace" Text="SSH port"></TextBlock>
+            <TextBox Grid.Column="1" x:Name="SshPortTextBox" FontFamily="Cascadia Mono, Consolas, monospace" Height="45" CornerRadius="10" Text="22" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"></TextBox>
+        </Grid>
+        
+        
+        
+        <!-- Контейнер с двумя полями ввода(логин и пароль) -->
+        <Grid Grid.Row="2" ColumnDefinitions="Auto, *" Margin="20,0,20,0" ColumnSpacing="20">
+            <TextBlock Grid.Column="0" FontFamily="Cascadia Mono, Consolas, monospace" Text="Логин"></TextBlock>
+            <TextBox Grid.Column="0" x:Name="LoginTextBox" FontFamily="Cascadia Mono, Consolas, monospace" Height="45" Width="80" CornerRadius="10" Text="root" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"></TextBox>
+            
+            <TextBlock Grid.Column="1" FontFamily="Cascadia Mono, Consolas, monospace" Text="Пароль"></TextBlock>
+            <TextBox Grid.Column="1" x:Name="PasswordTextBox" FontFamily="Cascadia Mono, Consolas, monospace" Height="45" CornerRadius="10" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"></TextBox>
+        </Grid>
+        
+        
+        
+        <!-- Контейнер для кнопки Установить -->
+        <Grid Grid.Row="3">
+            <Button Content="Установить" Width="310" Height="50"
+                    HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+                    VerticalAlignment="Top" HorizontalAlignment="Center"
+                    CornerRadius="12"
+                    FontWeight="SemiBold"
+                    BorderBrush="Transparent"
+                    BorderThickness="0"
+                    Click="Button_OnClick">
+                
+                <Button.Resources>
+                    <SolidColorBrush x:Key="ButtonBackground" Color="#C9444A"/>
+                    <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="#D95A5F"/>
+                </Button.Resources>
+                
+            </Button>
+        </Grid>
+        
+        
+        
+        <!-- Контейнер для вывода информации об установке -->
+        <Grid Grid.Row="4">
+            <Border Background="#121318"
+                    BorderBrush="#2E2F38"
+                    BorderThickness="1"
+                    CornerRadius="0,0,15,15"
+                    Margin="0,25,0,6"
+                    Padding="12,8">
+                <TextBlock Text="Здесь появится ход установки....."
+                           Foreground="#7F8596"
+                           FontFamily="Cascadia Mono, Consolas, monospace"
+                           FontSize="12"
+                           TextWrapping="Wrap"
+                           VerticalAlignment="Top"
+                           HorizontalAlignment="Left">
+
+                </TextBlock>
+            </Border>
+        </Grid>
+    </Grid>
 </UserControl>

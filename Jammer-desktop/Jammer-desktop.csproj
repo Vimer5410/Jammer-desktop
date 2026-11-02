@@ -24,4 +24,9 @@
         <PackageReference Include="Material.Icons.Avalonia" Version="3.0.2" />
         <PackageReference Include="PhosphorIconsAvalonia" Version="1.2.0" />
     </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\Jammer\Jammer.Core\Jammer.Core.csproj" />
+      <ProjectReference Include="..\..\Jammer\Jammer.Deploy\Jammer.Deploy.csproj" />
+    </ItemGroup>
 </Project>
