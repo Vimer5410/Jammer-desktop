@@ -3,7 +3,9 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-             x:Class="Jammer_desktop.Views.HomeView">
+             x:Class="Jammer_desktop.Views.HomeView"
+             xmlns:vm="using:Jammer_desktop.ViewModels"
+             x:DataType="vm:HomeViewModel">
     
     
     <Grid RowDefinitions="*,50,150">
@@ -20,7 +22,9 @@
                     FontSize="20"
                     FontWeight="SemiBold"
                     Margin="0,40,0,0"
-                    Cursor="hand">
+                    Cursor="hand"
+                    x:Name="ConnectButton"
+                    Click="ConnectButton_OnClick">
 
                 <Button.Resources>
                     <SolidColorBrush x:Key="ButtonBackground" Color="#C9444A"/>
@@ -41,7 +45,8 @@
         </Grid>
 
         <Grid Grid.Row="1">
-            <TextBox Text="77.221.140.145"
+            <TextBox x:Name="ServerIpTextBox"
+                     Text="77.221.140.145"
                      Width="220"
                      Height="40"
                      CornerRadius="12"
@@ -82,7 +87,7 @@
                     CornerRadius="0,0,15,15"
                     Margin="0,25,0,6"
                     Padding="12,8">
-                <TextBlock Text="Консольный вывод....."
+                <TextBlock Text="{Binding LogText}"
                            Foreground="#7F8596"
                            FontFamily="Cascadia Mono, Consolas, monospace"
                            FontSize="12"

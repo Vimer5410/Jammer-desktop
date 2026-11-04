@@ -4,7 +4,9 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:pia="clr-namespace:PhosphorIconsAvalonia.Markup;assembly=PhosphorIconsAvalonia"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-             x:Class="Jammer_desktop.Views.SelfHostedView">
+             x:Class="Jammer_desktop.Views.SelfHostedView"
+             xmlns:vm="using:Jammer_desktop.ViewModels"
+             x:DataType="vm:SelfHostedViewModel">
     
     
     <UserControl.Styles>
@@ -82,7 +84,7 @@
             <TextBox Grid.Column="0" x:Name="LoginTextBox" FontFamily="Cascadia Mono, Consolas, monospace" Height="45" Width="80" CornerRadius="10" Text="root" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"></TextBox>
             
             <TextBlock Grid.Column="1" FontFamily="Cascadia Mono, Consolas, monospace" Text="Пароль"></TextBlock>
-            <TextBox Grid.Column="1" x:Name="PasswordTextBox" FontFamily="Cascadia Mono, Consolas, monospace" Height="45" CornerRadius="10" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"></TextBox>
+            <TextBox PasswordChar="*" Grid.Column="1" x:Name="PasswordTextBox" FontFamily="Cascadia Mono, Consolas, monospace" Height="45" CornerRadius="10" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"></TextBox>
         </Grid>
         
         
@@ -116,7 +118,7 @@
                     CornerRadius="0,0,15,15"
                     Margin="0,25,0,6"
                     Padding="12,8">
-                <TextBlock Text="Здесь появится ход установки....."
+                <TextBlock Text="{Binding LogText}"
                            Foreground="#7F8596"
                            FontFamily="Cascadia Mono, Consolas, monospace"
                            FontSize="12"

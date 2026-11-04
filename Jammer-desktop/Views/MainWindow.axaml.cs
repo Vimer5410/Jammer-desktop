@@ -2,6 +2,7 @@ using Avalonia.Controls;
 using Avalonia.Interactivity;
 using Avalonia.Media;
 using Jammer_desktop.ViewModels;
+using Serilog;
 
 namespace Jammer_desktop.Views;
 
@@ -11,6 +12,7 @@ public partial class MainWindow : Window
     {
         InitializeComponent();
         HomeIcon.Foreground = new SolidColorBrush(Color.Parse("#C9444A"));
+        Log.Logger = new LoggerConfiguration().WriteTo.Sink(new GuiLogSink()).CreateLogger();
     }
     
 

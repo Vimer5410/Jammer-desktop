@@ -4,6 +4,7 @@
         <TargetFramework>net9.0</TargetFramework>
         <Nullable>enable</Nullable>
         <ApplicationManifest>app.manifest</ApplicationManifest>
+        <ApplicationIcon>Assets\jammer-vpn-dark.ico</ApplicationIcon>
     </PropertyGroup>
 
     <ItemGroup>
@@ -28,5 +29,11 @@
     <ItemGroup>
       <ProjectReference Include="..\..\Jammer\Jammer.Core\Jammer.Core.csproj" />
       <ProjectReference Include="..\..\Jammer\Jammer.Deploy\Jammer.Deploy.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Include="..\..\Jammer\wintun.dll">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </None>
     </ItemGroup>
 </Project>
