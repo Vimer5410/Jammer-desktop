@@ -6,4 +6,102 @@
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="Jammer_desktop.Views.LogView">
     
+    <UserControl.Styles>
+        <Style Selector="Button:pressed PathIcon.caret">
+            <Setter Property="Foreground" Value="#C9444A"/>
+        </Style>
+    </UserControl.Styles>
+    
+    <UserControl.Resources>
+        <!-- Фон обычный, при наведении и в фокусе -->
+        <SolidColorBrush x:Key="TextControlBackground" Color="#22232A"></SolidColorBrush>
+        <SolidColorBrush x:Key="TextControlBackgroundPointerOver" Color="#272832"></SolidColorBrush>
+        <SolidColorBrush x:Key="TextControlBackgroundFocused" Color="#2A2B35"></SolidColorBrush>
+
+
+        <!-- Рамка обычная, при наведении и в фокусе -->
+        <SolidColorBrush x:Key="TextControlBorderBrush" Color="#2E2F38"></SolidColorBrush>
+        <SolidColorBrush x:Key="TextControlBorderBrushPointerOver" Color="#3C3D49"></SolidColorBrush>
+        <SolidColorBrush x:Key="TextControlBorderBrushFocused" Color="#C9444A"></SolidColorBrush>
+
+
+        <!-- Текст обычный, при наведении и в фокусе -->
+        <SolidColorBrush x:Key="TextControlForeground" Color="#E6E8EE"></SolidColorBrush>
+        <SolidColorBrush x:Key="TextControlForegroundPointerOver" Color="#E6E8EE"></SolidColorBrush>
+        <SolidColorBrush x:Key="TextControlForegroundFocused" Color="#FFFFFF"></SolidColorBrush>
+    </UserControl.Resources>
+    
+    
+    <Grid RowDefinitions="70, Auto" Margin="0, 30,0,0">
+    
+        <!-- Контейнер верхней кнопки Self-Hosted для возврата на предыдущую страницу -->
+        <Grid Grid.Row="0">
+            <Button Grid.Row="0" BorderBrush="Transparent"
+                    Height="50" Width="175" Margin="20,0,0,0"
+                    HorizontalAlignment="Left" VerticalAlignment="Center"
+                    Cursor="hand" Background="Transparent"
+                    CornerRadius="8"
+                    Padding="0"
+                    Click="BackButton_OnClick">
+            
+                <Button.Resources>
+                    <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="Transparent"/>
+                    <SolidColorBrush x:Key="ButtonBackgroundPressed" Color="Transparent"/>
+                    <SolidColorBrush x:Key="ButtonBorderBrushPointerOver" Color="Transparent"/>
+                </Button.Resources>
+            
+            
+                <Grid ColumnDefinitions="Auto, *">
+                    <PathIcon Grid.Column="0" Classes="caret" Data="{markup:IconGeometry Icon=caret_left, IconType=regular}"></PathIcon>
+                    <TextBlock Grid.Column="1" Text="Журнал" FontWeight="Bold" FontSize="18" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0"></TextBlock>
+                </Grid>
+            </Button>
+        </Grid>
+
+    
+        <StackPanel Grid.Row="1" Margin="20,0,20,0" Spacing="16">
+
+        <StackPanel Spacing="8">
+            <TextBlock FontFamily="Cascadia Mono, Consolas, monospace" Text="Путь сохранения логов"/>
+
+            <Grid ColumnDefinitions="*, Auto" ColumnSpacing="10">
+                <TextBox Watermark=".../JammerVPN/Logs/log.txt"
+                         FontFamily="Cascadia Mono, Consolas, monospace" FontSize="13"
+                         Height="45" CornerRadius="10"
+                         HorizontalContentAlignment="Left" VerticalContentAlignment="Center"/>
+
+                <Button Grid.Column="1" Classes="fieldButton"
+                        Width="45" Height="45" Padding="0" Cursor="hand" CornerRadius="10"
+                        Background="#22232A" BorderBrush="#2E2F38" BorderThickness="1"
+                        HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
+                    <Button.Resources>
+                        <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="#2A2B35"/>
+                        <SolidColorBrush x:Key="ButtonBackgroundPressed" Color="#FF9F73"/>
+                        <SolidColorBrush x:Key="ButtonBorderBrushPointerOver" Color="#3C3D49"/>
+                        <SolidColorBrush x:Key="ButtonBorderBrushPressed" Color="#FF9F73"/>
+                    </Button.Resources>
+                    <PathIcon Width="20" Height="20" Data="{markup:IconGeometry Icon=folder_open, IconType=regular}"/>
+                </Button>
+            </Grid>
+        </StackPanel>
+
+        <Border CornerRadius="8" Padding="14,12"
+                Background="#22232A" BorderBrush="#2E2F38" BorderThickness="1">
+            <Grid ColumnDefinitions="Auto, *" ColumnSpacing="10">
+                <PathIcon Width="16" Height="16" Margin="0,1,0,0" VerticalAlignment="Top"
+                          Foreground="#7F8596"
+                          Data="{markup:IconGeometry Icon=info, IconType=regular}"/>
+
+                <TextBlock Grid.Column="1" FontSize="12" LineHeight="18"
+                           Foreground="#9AA0B2" TextWrapping="Wrap">
+                    <Run Text="Если путь не указан или неверный, журнал сохраняется по умолчанию:"/>
+                    <LineBreak/>
+                    <Run FontFamily="Cascadia Mono, Consolas, monospace" Foreground="#E6E8EE" Text=".../JammerVPN/Logs/log.txt"/>
+                </TextBlock>
+            </Grid>
+        </Border>
+    </StackPanel>
+</Grid>
+    
+    
 </UserControl>

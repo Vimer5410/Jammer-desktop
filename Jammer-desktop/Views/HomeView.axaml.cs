@@ -11,6 +11,8 @@ using Avalonia.Media;
 using Avalonia.Threading;
 using Jammer_desktop.ViewModels;
 using Jammer.Core;
+using Jammer.Core.Routing;
+using Jammer.Core.Tun;
 using Org.BouncyCastle.Asn1.TeleTrust;
 using Serilog;
 
@@ -86,7 +88,7 @@ public partial class HomeView : UserControl
                 _clientTcpLogger.Error("Ошибка: {Ex}", ex.Message);
                 isConnected = false;
                 _route?.Clean(serverIp, "JammerTun");
-                WinTun.Close();
+                _tun.CloseSession();
                 ConnectButton.IsEnabled = true;
             }
         }
@@ -95,7 +97,7 @@ public partial class HomeView : UserControl
             isConnected = false;
             tcpSocket.Close();
             _route?.Clean(serverIp, "JammerTun");
-            WinTun.Close();
+            _tun.CloseSession();
             ConnectButton.IsEnabled = true;
             ConnectButton.Content = "Connect";
             ConnectButton.Background = new SolidColorBrush(Color.Parse("#C9444A"));
