@@ -11,7 +11,7 @@ public partial class SelfHostedViewModel : ViewModelBase
     {
         GuiLogSink.OnLog += (source, line) =>
         {
-            if (source == "SshService")
+            if (source == "SshService" || source=="ServerDelivery")
                 LogText += line;
         };
     }

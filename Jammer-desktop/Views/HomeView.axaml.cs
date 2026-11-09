@@ -70,6 +70,10 @@ public partial class HomeView : UserControl
 
     private async void ConnectButton_OnClick(object? sender, RoutedEventArgs e)
     {
+        Ring.PlayBackRate = 3;
+        await Task.Delay(500);
+        Ring.PlayBackRate = 1;
+        
         if (!isConnected)
         {
             serverIp = ServerIpTextBox.Text;

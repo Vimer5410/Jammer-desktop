@@ -2,6 +2,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:lottie="using:Avalonia.Labs.Lottie"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="Jammer_desktop.Views.HomeView"
              xmlns:vm="using:Jammer_desktop.ViewModels"
@@ -11,36 +12,41 @@
     <Grid RowDefinitions="*,50,150">
         
         <Grid Grid.Row="0">
-            <Button Content="Connect"
-                    CornerRadius="100"
-                    HorizontalAlignment="Center"
-                    VerticalAlignment="Center"
-                    HorizontalContentAlignment="Center"
-                    VerticalContentAlignment="Center"
-                    Height="140"
-                    Width="140"
-                    FontSize="20"
-                    FontWeight="SemiBold"
-                    Margin="0,40,0,0"
-                    Cursor="hand"
-                    x:Name="ConnectButton"
-                    Click="ConnectButton_OnClick">
+            <Grid Width="140" Height="140" Margin="0,40,0,0"
+                  HorizontalAlignment="Center" VerticalAlignment="Center">
 
-                <Button.Resources>
-                    <SolidColorBrush x:Key="ButtonBackground" Color="#C9444A"/>
-                    <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="#D95A5F"/>
-                    <SolidColorBrush x:Key="ButtonBackgroundPressed" Color="#FF9F73"/>
+                <lottie:Lottie x:Name="Ring" Width="336" Height="336" IsHitTestVisible="False"
+                               Path="avares://Jammer-desktop/Assets/SomethingInteresting.json"
+                               RepeatCount="{x:Static lottie:Lottie.Infinity}"/>
 
-                    <SolidColorBrush x:Key="ButtonBorderBrush" Color="#C9444A"/>
-                    <SolidColorBrush x:Key="ButtonBorderBrushPointerOver" Color="#D95A5F"/>
-                    <SolidColorBrush x:Key="ButtonBorderBrushPressed" Color="#FF9F73"/>
+                <Button Content="Connect"
+                        CornerRadius="100"
+                        HorizontalContentAlignment="Center"
+                        VerticalContentAlignment="Center"
+                        Height="140"
+                        Width="140"
+                        FontSize="20"
+                        FontWeight="SemiBold"
+                        BorderThickness="10"
+                        Cursor="hand"
+                        x:Name="ConnectButton"
+                        Click="ConnectButton_OnClick">
 
-                    <SolidColorBrush x:Key="ButtonForeground" Color="#FFFFFF"/>
-                    <SolidColorBrush x:Key="ButtonForegroundPointerOver" Color="#FFFFFF"/>
-                    <SolidColorBrush x:Key="ButtonForegroundPressed" Color="#1A1B21"/>
-                </Button.Resources>
+                    <Button.Resources>
+                        <SolidColorBrush x:Key="ButtonBackground" Color="#C9444A"/>
+                        <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="#D95A5F"/>
+                        <SolidColorBrush x:Key="ButtonBackgroundPressed" Color="#FF9F73"/>
 
-            </Button>
+                        <SolidColorBrush x:Key="ButtonBorderBrush" Color="#121318"/>
+                        <SolidColorBrush x:Key="ButtonBorderBrushPointerOver" Color="#121318"/>
+                        <SolidColorBrush x:Key="ButtonBorderBrushPressed" Color="#121318"/>
+
+                        <SolidColorBrush x:Key="ButtonForeground" Color="#FFFFFF"/>
+                        <SolidColorBrush x:Key="ButtonForegroundPointerOver" Color="#FFFFFF"/>
+                        <SolidColorBrush x:Key="ButtonForegroundPressed" Color="#1A1B21"/>
+                    </Button.Resources>
+                </Button>
+            </Grid>
 
         </Grid>
 
