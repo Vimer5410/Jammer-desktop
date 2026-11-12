@@ -70,10 +70,8 @@ public partial class HomeView : UserControl
 
     private async void ConnectButton_OnClick(object? sender, RoutedEventArgs e)
     {
-        Ring.PlayBackRate = 3;
-        await Task.Delay(500);
-        Ring.PlayBackRate = 1;
-        
+        PulseRing();
+
         if (!isConnected)
         {
             serverIp = ServerIpTextBox.Text;
@@ -94,6 +92,7 @@ public partial class HomeView : UserControl
                 _route?.Clean(serverIp, "JammerTun");
                 _tun.CloseSession();
                 ConnectButton.IsEnabled = true;
+                ConnectButton.Content = "Connect";
             }
         }
         else
@@ -104,7 +103,7 @@ public partial class HomeView : UserControl
             _tun.CloseSession();
             ConnectButton.IsEnabled = true;
             ConnectButton.Content = "Connect";
-            ConnectButton.Background = new SolidColorBrush(Color.Parse("#C9444A"));
+            RingHost.Classes.Remove("connected");
         }
         
     }
@@ -174,8 +173,8 @@ public partial class HomeView : UserControl
         Dispatcher.UIThread.Post(() =>
         {
             ConnectButton.IsEnabled = true;
-            ConnectButton.Background = new SolidColorBrush(Colors.Green);
-            ConnectButton.Content = "Connected";
+            ConnectButton.Content = "Disconnect";
+            RingHost.Classes.Add("connected");
         });
 
         return BitConverter.ToInt32(data);
@@ -195,6 +194,14 @@ public partial class HomeView : UserControl
 
             _clientTcpLogger.Debug("Отправлено {Bytes} байт", data.Length);
         }
+    }
+
+    // Кольцо на полсекунды крутится втрое быстрее (30 -> 90 fps в QML)
+    private async void PulseRing()
+    {
+        RingGray.PlayBackRate = RingColor.PlayBackRate = 3;
+        await Task.Delay(500);
+        RingGray.PlayBackRate = RingColor.PlayBackRate = 1;
     }
 
     private void ChangeButtonToInactive()

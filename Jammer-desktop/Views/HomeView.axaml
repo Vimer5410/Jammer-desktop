@@ -12,12 +12,32 @@
     <Grid RowDefinitions="*,50,150">
         
         <Grid Grid.Row="0">
-            <Grid Width="140" Height="140" Margin="0,40,0,0"
+            <Grid x:Name="RingHost" Classes="ring" Width="140" Height="140" Margin="0,40,0,0"
                   HorizontalAlignment="Center" VerticalAlignment="Center">
 
-                <lottie:Lottie x:Name="Ring" Width="336" Height="336" IsHitTestVisible="False"
-                               Path="avares://Jammer-desktop/Assets/SomethingInteresting.json"
+                <!-- Кольцо: серая версия всегда видна, цветная проявляется поверх неё при подключении -->
+                <Grid.Styles>
+                    <Style Selector="Grid.ring lottie|Lottie.color">
+                        <Setter Property="Opacity" Value="0"/>
+                    </Style>
+                    <Style Selector="Grid.ring.connected lottie|Lottie.color">
+                        <Setter Property="Opacity" Value="1"/>
+                    </Style>
+                </Grid.Styles>
+
+                <lottie:Lottie x:Name="RingGray" Width="336" Height="336" IsHitTestVisible="False"
+                               Path="avares://Jammer-desktop/Assets/ring_gray.json"
                                RepeatCount="{x:Static lottie:Lottie.Infinity}"/>
+
+                <lottie:Lottie x:Name="RingColor" Classes="color" Width="336" Height="336" IsHitTestVisible="False"
+                               Path="avares://Jammer-desktop/Assets/ring_color.json"
+                               RepeatCount="{x:Static lottie:Lottie.Infinity}">
+                    <lottie:Lottie.Transitions>
+                        <Transitions>
+                            <DoubleTransition Property="Opacity" Duration="0:0:0.7" Easing="CubicEaseInOut"/>
+                        </Transitions>
+                    </lottie:Lottie.Transitions>
+                </lottie:Lottie>
 
                 <Button Content="Connect"
                         CornerRadius="100"
@@ -25,7 +45,8 @@
                         VerticalContentAlignment="Center"
                         Height="140"
                         Width="140"
-                        FontSize="20"
+                        Padding="0"
+                        FontSize="18"
                         FontWeight="SemiBold"
                         BorderThickness="10"
                         Cursor="hand"
@@ -33,17 +54,17 @@
                         Click="ConnectButton_OnClick">
 
                     <Button.Resources>
-                        <SolidColorBrush x:Key="ButtonBackground" Color="#C9444A"/>
-                        <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="#D95A5F"/>
-                        <SolidColorBrush x:Key="ButtonBackgroundPressed" Color="#FF9F73"/>
+                        <SolidColorBrush x:Key="ButtonBackground" Color="#22232A"/>
+                        <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="#2A2B35"/>
+                        <SolidColorBrush x:Key="ButtonBackgroundPressed" Color="#33343F"/>
 
                         <SolidColorBrush x:Key="ButtonBorderBrush" Color="#121318"/>
                         <SolidColorBrush x:Key="ButtonBorderBrushPointerOver" Color="#121318"/>
                         <SolidColorBrush x:Key="ButtonBorderBrushPressed" Color="#121318"/>
 
-                        <SolidColorBrush x:Key="ButtonForeground" Color="#FFFFFF"/>
+                        <SolidColorBrush x:Key="ButtonForeground" Color="#E6E8EE"/>
                         <SolidColorBrush x:Key="ButtonForegroundPointerOver" Color="#FFFFFF"/>
-                        <SolidColorBrush x:Key="ButtonForegroundPressed" Color="#1A1B21"/>
+                        <SolidColorBrush x:Key="ButtonForegroundPressed" Color="#FFFFFF"/>
                     </Button.Resources>
                 </Button>
             </Grid>
