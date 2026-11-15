@@ -18,20 +18,20 @@
     
     <UserControl.Resources>
         <!-- Фон обычный, при наведении и в фокусе -->
-        <SolidColorBrush x:Key="TextControlBackground" Color="#22232A"></SolidColorBrush>
-        <SolidColorBrush x:Key="TextControlBackgroundPointerOver" Color="#272832"></SolidColorBrush>
-        <SolidColorBrush x:Key="TextControlBackgroundFocused" Color="#2A2B35"></SolidColorBrush>
+        <SolidColorBrush x:Key="TextControlBackground" Color="#0E1013"></SolidColorBrush>
+        <SolidColorBrush x:Key="TextControlBackgroundPointerOver" Color="#0E1013"></SolidColorBrush>
+        <SolidColorBrush x:Key="TextControlBackgroundFocused" Color="#0E1013"></SolidColorBrush>
 
 
         <!-- Рамка обычная, при наведении и в фокусе -->
-        <SolidColorBrush x:Key="TextControlBorderBrush" Color="#2E2F38"></SolidColorBrush>
-        <SolidColorBrush x:Key="TextControlBorderBrushPointerOver" Color="#3C3D49"></SolidColorBrush>
+        <SolidColorBrush x:Key="TextControlBorderBrush" Color="#12FFFFFF"></SolidColorBrush>
+        <SolidColorBrush x:Key="TextControlBorderBrushPointerOver" Color="#21FFFFFF"></SolidColorBrush>
         <SolidColorBrush x:Key="TextControlBorderBrushFocused" Color="#C9444A"></SolidColorBrush>
 
 
         <!-- Текст обычный, при наведении и в фокусе -->
-        <SolidColorBrush x:Key="TextControlForeground" Color="#E6E8EE"></SolidColorBrush>
-        <SolidColorBrush x:Key="TextControlForegroundPointerOver" Color="#E6E8EE"></SolidColorBrush>
+        <SolidColorBrush x:Key="TextControlForeground" Color="#ECEEF2"></SolidColorBrush>
+        <SolidColorBrush x:Key="TextControlForegroundPointerOver" Color="#ECEEF2"></SolidColorBrush>
         <SolidColorBrush x:Key="TextControlForegroundFocused" Color="#FFFFFF"></SolidColorBrush>
     </UserControl.Resources>
     
@@ -112,14 +112,14 @@
         
         <!-- Контейнер для вывода информации об установке -->
         <Grid Grid.Row="4">
-            <Border Background="#121318"
-                    BorderBrush="#2E2F38"
+            <Border Background="#0E1013"
+                    BorderBrush="#12FFFFFF"
                     BorderThickness="1"
                     CornerRadius="0,0,15,15"
                     Margin="0,25,0,6"
                     Padding="12,8">
                 <TextBlock Text="{Binding LogText}"
-                           Foreground="#7F8596"
+                           Foreground="#A3A8B2"
                            FontFamily="Cascadia Mono, Consolas, monospace"
                            FontSize="12"
                            TextWrapping="Wrap"

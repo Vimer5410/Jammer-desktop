@@ -24,15 +24,15 @@
     
     
     <UserControl.Resources>
-        <SolidColorBrush x:Key="ToggleSwitchFillOff" Color="#2A2B35"/>
-        <SolidColorBrush x:Key="ToggleSwitchFillOffPointerOver" Color="#30313C"/>
-        <SolidColorBrush x:Key="ToggleSwitchFillOffPressed" Color="#33343F"/>
-        <SolidColorBrush x:Key="ToggleSwitchStrokeOff" Color="#4A4B57"/>
-        <SolidColorBrush x:Key="ToggleSwitchStrokeOffPointerOver" Color="#5A5B68"/>
-        <SolidColorBrush x:Key="ToggleSwitchStrokeOffPressed" Color="#5A5B68"/>
-        <SolidColorBrush x:Key="ToggleSwitchKnobFillOff" Color="#A9AEBE"/>
-        <SolidColorBrush x:Key="ToggleSwitchKnobFillOffPointerOver" Color="#E6E8EE"/>
-        <SolidColorBrush x:Key="ToggleSwitchKnobFillOffPressed" Color="#E6E8EE"/>
+        <SolidColorBrush x:Key="ToggleSwitchFillOff" Color="#1E2127"/>
+        <SolidColorBrush x:Key="ToggleSwitchFillOffPointerOver" Color="#252930"/>
+        <SolidColorBrush x:Key="ToggleSwitchFillOffPressed" Color="#171A1F"/>
+        <SolidColorBrush x:Key="ToggleSwitchStrokeOff" Color="#4A4F58"/>
+        <SolidColorBrush x:Key="ToggleSwitchStrokeOffPointerOver" Color="#6E747F"/>
+        <SolidColorBrush x:Key="ToggleSwitchStrokeOffPressed" Color="#6E747F"/>
+        <SolidColorBrush x:Key="ToggleSwitchKnobFillOff" Color="#A3A8B2"/>
+        <SolidColorBrush x:Key="ToggleSwitchKnobFillOffPointerOver" Color="#ECEEF2"/>
+        <SolidColorBrush x:Key="ToggleSwitchKnobFillOffPressed" Color="#ECEEF2"/>
         <SolidColorBrush x:Key="ToggleSwitchFillOn" Color="#C9444A"/>
         <SolidColorBrush x:Key="ToggleSwitchFillOnPointerOver" Color="#D95A5F"/>
         <SolidColorBrush x:Key="ToggleSwitchFillOnPressed" Color="#FF9F73"/>
@@ -41,7 +41,7 @@
         <SolidColorBrush x:Key="ToggleSwitchStrokeOnPressed" Color="#FF9F73"/>
         <SolidColorBrush x:Key="ToggleSwitchKnobFillOn" Color="#FFFFFF"/>
         <SolidColorBrush x:Key="ToggleSwitchKnobFillOnPointerOver" Color="#FFFFFF"/>
-        <SolidColorBrush x:Key="ToggleSwitchKnobFillOnPressed" Color="#1A1B21"/>
+        <SolidColorBrush x:Key="ToggleSwitchKnobFillOnPressed" Color="#121418"/>
     </UserControl.Resources>
     
     
@@ -75,16 +75,16 @@
         
         
         <Border Grid.Row="1" Height="64" CornerRadius="8" Margin="20,0,20,0"
-                Background="#22232A" BorderBrush="#2E2F38" BorderThickness="1" Padding="16,0">
+                Background="#171A1F" BorderBrush="#12FFFFFF" BorderThickness="1" Padding="16,0">
             
             <Grid ColumnDefinitions="*,Auto">
                 
                 <StackPanel VerticalAlignment="Center" Spacing="2">
                     <TextBlock Text="Запускать вместе с Windows"
-                               FontSize="15" FontWeight="Medium" Foreground="#E6E8EE"/>
+                               FontSize="15" FontWeight="Medium" Foreground="#ECEEF2"/>
                     
                     <TextBlock Text="автозапуск при входе в систему"
-                               FontSize="12" Foreground="#7F8596"/>
+                               FontSize="12" Foreground="#A3A8B2"/>
                 </StackPanel>
                 
                 <ToggleSwitch Grid.Column="1" IsChecked="False" Cursor="hand"
@@ -95,16 +95,16 @@
         
         
         <Border Grid.Row="2" Height="64" CornerRadius="8" Margin="20,0,20,0"
-                Background="#22232A" BorderBrush="#2E2F38" BorderThickness="1" Padding="16,0">
+                Background="#171A1F" BorderBrush="#12FFFFFF" BorderThickness="1" Padding="16,0">
             
             <Grid ColumnDefinitions="*,Auto">
                 
                 <StackPanel VerticalAlignment="Center" Spacing="2">
                     <TextBlock Text="Сворачивать в трей"
-                               FontSize="15" FontWeight="Medium" Foreground="#E6E8EE"/>
+                               FontSize="15" FontWeight="Medium" Foreground="#ECEEF2"/>
                     
                     <TextBlock Text="Закрытие окна не отключает VPN"
-                               FontSize="12" Foreground="#7F8596"/>
+                               FontSize="12" Foreground="#A3A8B2"/>
                 </StackPanel>
                 
                 <ToggleSwitch Grid.Column="1" IsChecked="False" Cursor="hand"
@@ -115,16 +115,16 @@
         
         
         <Border Grid.Row="3" Height="64" CornerRadius="8" Margin="20,0,20,0"
-                Background="#22232A" BorderBrush="#2E2F38" BorderThickness="1" Padding="16,0">
+                Background="#171A1F" BorderBrush="#12FFFFFF" BorderThickness="1" Padding="16,0">
             
             <Grid ColumnDefinitions="*,Auto">
                 
                 <StackPanel VerticalAlignment="Center" Spacing="2">
                     <TextBlock Text="Логирование"
-                               FontSize="15" FontWeight="Medium" Foreground="#E6E8EE"/>
+                               FontSize="15" FontWeight="Medium" Foreground="#ECEEF2"/>
                     
                     <TextBlock Text="Журнал работы приложения"
-                               FontSize="12" Foreground="#7F8596"/>
+                               FontSize="12" Foreground="#A3A8B2"/>
                 </StackPanel>
                 
                 <ToggleSwitch Grid.Column="1" IsChecked="False" Cursor="hand"
@@ -134,19 +134,19 @@
         </Border>
         
         <Border Grid.Row="4" Height="64" CornerRadius="8" Margin="20,0,20,0"
-                Background="#22232A" BorderBrush="#2E2F38" BorderThickness="1" Padding="16,0">
+                Background="#171A1F" BorderBrush="#12FFFFFF" BorderThickness="1" Padding="16,0">
             
             <Grid ColumnDefinitions="*,Auto">
                 
                 <StackPanel VerticalAlignment="Center" Spacing="2">
                     <TextBlock Text="Язык"
-                               FontSize="15" FontWeight="Medium" Foreground="#E6E8EE"/>
+                               FontSize="15" FontWeight="Medium" Foreground="#ECEEF2"/>
                     
                     <TextBlock Text="Язык работы приложения"
-                               FontSize="12" Foreground="#7F8596"/>
+                               FontSize="12" Foreground="#A3A8B2"/>
                 </StackPanel>
                 
-                <ComboBox Grid.Column="1" Width="40" Height="20" Foreground="#6B6F80"  Background="#22232A" BorderBrush="#2E2F38" >
+                <ComboBox Grid.Column="1" Width="40" Height="20" Foreground="#6E747F"  Background="#0E1013" BorderBrush="#12FFFFFF" >
                     <ComboBoxItem Content="Русский"></ComboBoxItem>
                     <ComboBoxItem Content="English"></ComboBoxItem>
                     

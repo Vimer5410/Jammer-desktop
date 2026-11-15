@@ -90,7 +90,7 @@ public partial class HomeView : UserControl
                 _clientTcpLogger.Error("Ошибка: {Ex}", ex.Message);
                 isConnected = false;
                 _route?.Clean(serverIp, "JammerTun");
-                _tun.CloseSession();
+                _tun?.CloseSession();
                 ConnectButton.IsEnabled = true;
                 ConnectButton.Content = "Connect";
             }

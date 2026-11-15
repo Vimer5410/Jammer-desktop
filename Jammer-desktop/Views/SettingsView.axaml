@@ -10,19 +10,19 @@
 
     <UserControl.Styles>
         <Style Selector="PathIcon.lead">
-            <Setter Property="Foreground" Value="#A9AEBE"/>
+            <Setter Property="Foreground" Value="#A3A8B2"/>
         </Style>
         
         <Style Selector="PathIcon.caret">
-            <Setter Property="Foreground" Value="#6B6F80"/>
+            <Setter Property="Foreground" Value="#6E747F"/>
         </Style>
         
         <Style Selector="Button:pointerover PathIcon.lead">
-            <Setter Property="Foreground" Value="#E6E8EE"/>
+            <Setter Property="Foreground" Value="#ECEEF2"/>
         </Style>
         
         <Style Selector="Button:pointerover PathIcon.caret">
-            <Setter Property="Foreground" Value="#E6E8EE"/>
+            <Setter Property="Foreground" Value="#ECEEF2"/>
         </Style>
         
         <Style Selector="Button:pressed PathIcon.caret">
@@ -32,7 +32,7 @@
     </UserControl.Styles>
 
     <UserControl.Resources>
-        <SolidColorBrush x:Key="ButtonForeground" Color="#E6E8EE"/>
+        <SolidColorBrush x:Key="ButtonForeground" Color="#ECEEF2"/>
         <SolidColorBrush x:Key="ButtonForegroundPointerOver" Color="#FFFFFF"/>
         <SolidColorBrush x:Key="ButtonForegroundPressed" Color="#FFFFFF"/>
     </UserControl.Resources>

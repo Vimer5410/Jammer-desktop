@@ -9,11 +9,11 @@
         x:DataType="vm:MainViewModel"
         Height="535"
         Width="350"
-        Background="#1A1B21"
+        Background="#121418"
         CanResize="False"
         Icon="/Assets/jammer-vpn-dark.ico"
         Title="JammerVPN"
-        Foreground="#6B6F80"
+        Foreground="#6E747F"
         ExtendClientAreaToDecorationsHint="True"
         ExtendClientAreaTitleBarHeightHint="32">
 
@@ -24,12 +24,12 @@
     </Design.DataContext>
 
     <Window.Resources>
-        <SolidColorBrush x:Key="ButtonBackground" Color="#22232A"/>
-        <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="#2A2B35"/>
-        <SolidColorBrush x:Key="ButtonBackgroundPressed" Color="#33343F"/>
-        <SolidColorBrush x:Key="ButtonBorderBrush" Color="#2E2F38"/>
-        <SolidColorBrush x:Key="ButtonBorderBrushPointerOver" Color="#3C3D49"/>
-        <SolidColorBrush x:Key="ButtonBorderBrushPressed" Color="#3C3D49"/>
+        <SolidColorBrush x:Key="ButtonBackground" Color="#1E2127"/>
+        <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="#252930"/>
+        <SolidColorBrush x:Key="ButtonBackgroundPressed" Color="#171A1F"/>
+        <SolidColorBrush x:Key="ButtonBorderBrush" Color="#12FFFFFF"/>
+        <SolidColorBrush x:Key="ButtonBorderBrushPointerOver" Color="#21FFFFFF"/>
+        <SolidColorBrush x:Key="ButtonBorderBrushPressed" Color="#21FFFFFF"/>
     </Window.Resources>
 
     <Grid RowDefinitions="*,50,150,70">
@@ -37,8 +37,8 @@
         <ContentControl Grid.Row="0" Grid.RowSpan="3" Content="{Binding CurrentPage}" />
 
         <Grid Grid.Row="3">
-            <Border Background="#121318"
-                    BorderBrush="#2E2F38"
+            <Border Background="#0E1013"
+                    BorderBrush="#12FFFFFF"
                     BorderThickness="1"
                     CornerRadius="15, 15, 0, 0">
                 <UniformGrid Columns="2" >
@@ -55,7 +55,7 @@
                             Cursor="hand"
                             Click="HomeButton_OnClick">
                         
-                        <PathIcon Data="{pia:IconGeometry Icon=house, IconType=bold}" Height="27" Width="27" Foreground="#6B6F80" x:Name="HomeIcon" />
+                        <PathIcon Data="{pia:IconGeometry Icon=house, IconType=bold}" Height="27" Width="27" Foreground="#6E747F" x:Name="HomeIcon" />
                         
                         
                         <Button.Resources>
@@ -79,7 +79,7 @@
                             Cursor="hand"
                             Click="SettingsButton_OnClick">
                         
-                        <PathIcon Data="{pia:IconGeometry Icon=gear_fine, IconType=bold}" Height="27" Width="27" Foreground="#6B6F80" x:Name="SettingsIcon"></PathIcon>
+                        <PathIcon Data="{pia:IconGeometry Icon=gear_fine, IconType=bold}" Height="27" Width="27" Foreground="#6E747F" x:Name="SettingsIcon"></PathIcon>
                         
                         <Button.Resources>
                             <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="Transparent"/>
