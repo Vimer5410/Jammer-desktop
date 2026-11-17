@@ -66,6 +66,10 @@ public partial class HomeView : UserControl
         {
             Directory.CreateDirectory(Path.GetDirectoryName(ipFilePath));
         }
+
+        // консоль сама прокручивается к последней строке
+        GuiLogSink.OnLog += (_, _) =>
+            Dispatcher.UIThread.Post(() => LogScrollViewer.ScrollToEnd(), DispatcherPriority.Background);
     }
 
     private async void ConnectButton_OnClick(object? sender, RoutedEventArgs e)
@@ -92,8 +96,7 @@ public partial class HomeView : UserControl
                 _route?.Clean(serverIp, "JammerTun");
                 _tun?.CloseSession();
                 ConnectButton.IsEnabled = true;
-                ConnectButton.Content = "Connect";
-            }
+                ConnectButton.Content = "Connect";            }
         }
         else
         {
@@ -103,8 +106,7 @@ public partial class HomeView : UserControl
             _tun.CloseSession();
             ConnectButton.IsEnabled = true;
             ConnectButton.Content = "Connect";
-            RingHost.Classes.Remove("connected");
-        }
+            RingHost.Classes.Remove("connected");        }
         
     }
 
@@ -174,8 +176,7 @@ public partial class HomeView : UserControl
         {
             ConnectButton.IsEnabled = true;
             ConnectButton.Content = "Disconnect";
-            RingHost.Classes.Add("connected");
-        });
+            RingHost.Classes.Add("connected");        });
 
         return BitConverter.ToInt32(data);
     }
@@ -185,8 +186,7 @@ public partial class HomeView : UserControl
         while (isConnected)
         {
             var input = _tun.ReceivePacket();
-
-            //fix: пофиксить загрузку одного ядра в 100% через WintunGetReadWaitEvent (if (input == null) continue бесконечно по кругу крутиться и забивает весь поток)
+            
             if (input == null) continue;
 
             var data = Crypto.AES.Encrypt(input, key);
@@ -195,8 +195,8 @@ public partial class HomeView : UserControl
             _clientTcpLogger.Debug("Отправлено {Bytes} байт", data.Length);
         }
     }
-
-    // Кольцо на полсекунды крутится втрое быстрее (30 -> 90 fps в QML)
+    
+    
     private async void PulseRing()
     {
         RingGray.PlayBackRate = RingColor.PlayBackRate = 3;
@@ -208,6 +208,15 @@ public partial class HomeView : UserControl
     {
         ConnectButton.IsEnabled = false;
         ConnectButton.Content = "Connecting...";
+    }
+    
+    
+    private void LogHeader_OnPointerPressed(object? sender, Avalonia.Input.PointerPressedEventArgs e)
+    {
+        LogBody.IsVisible = !LogBody.IsVisible;
+
+        if (LogBody.IsVisible) LogCard.Classes.Add("open");
+        else LogCard.Classes.Remove("open");
     }
     
 }

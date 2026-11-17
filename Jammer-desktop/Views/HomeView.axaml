@@ -3,16 +3,36 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:lottie="using:Avalonia.Labs.Lottie"
+             xmlns:markup="clr-namespace:PhosphorIconsAvalonia.Markup;assembly=PhosphorIconsAvalonia"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="Jammer_desktop.Views.HomeView"
              xmlns:vm="using:Jammer_desktop.ViewModels"
              x:DataType="vm:HomeViewModel">
     
     
-    <Grid RowDefinitions="*,50,150">
-        
+    <UserControl.Styles>
+        <!-- плашка консоли стрелка вниз когда свёрнута, вверх когда открыта -->
+        <Style Selector="Border.logcard PathIcon.chevron">
+            <Setter Property="Foreground" Value="#6E747F"/>
+            <Setter Property="RenderTransform" Value="rotate(0deg)"/>
+            <Setter Property="Transitions">
+                <Transitions>
+                    <TransformOperationsTransition Property="RenderTransform" Duration="0:0:0.15" Easing="CubicEaseInOut"/>
+                </Transitions>
+            </Setter>
+        </Style>
+        <Style Selector="Border.logcard.open PathIcon.chevron">
+            <Setter Property="RenderTransform" Value="rotate(180deg)"/>
+        </Style>
+        <Style Selector="Border.logcard:pointerover">
+            <Setter Property="BorderBrush" Value="#21FFFFFF"/>
+        </Style>
+    </UserControl.Styles>
+
+    <Grid RowDefinitions="216,70,*">
+
         <Grid Grid.Row="0">
-            <Grid x:Name="RingHost" Classes="ring" Width="140" Height="140" Margin="0,40,0,0"
+            <Grid x:Name="RingHost" Classes="ring" Width="140" Height="140" Margin="0,80,0,0"
                   HorizontalAlignment="Center" VerticalAlignment="Center">
 
                 <!-- Кольцо: серая версия всегда видна, цветная проявляется поверх неё при подключении -->
@@ -76,6 +96,7 @@
                      Text="77.221.140.145"
                      Width="220"
                      Height="40"
+                     Margin="0,35,0,0"
                      CornerRadius="12"
                      FontFamily="Cascadia Mono, Consolas, monospace"
                      HorizontalContentAlignment="Center"
@@ -107,24 +128,40 @@
 
         </Grid>
 
-        <Grid Grid.Row="2">
-            <Border Background="#0E1013"
-                    BorderBrush="#12FFFFFF"
-                    BorderThickness="1"
-                    CornerRadius="0,0,15,15"
-                    Margin="0,25,0,6"
-                    Padding="12,8">
-                <TextBlock Text="{Binding LogText}"
-                           Foreground="#A3A8B2"
-                           FontFamily="Cascadia Mono, Consolas, monospace"
-                           FontSize="12"
-                           TextWrapping="Wrap"
-                           VerticalAlignment="Top"
-                           HorizontalAlignment="Left">
+        <!-- Сворачиваемая плашка консоли: заголовок со стрелкой, под ним вывод -->
+        <Border Grid.Row="2" x:Name="LogCard" Classes="logcard"
+                VerticalAlignment="Top"
+                Margin="20,10,20,0"
+                CornerRadius="12"
+                Background="#171A1F" BorderBrush="#12FFFFFF" BorderThickness="1"
+                ClipToBounds="True">
+            
+            <StackPanel>
+                <Border x:Name="LogHeader" Height="44" Background="Transparent" Cursor="Hand"
+                        PointerPressed="LogHeader_OnPointerPressed">
+                    <Grid ColumnDefinitions="*,Auto" Margin="16,0">
+                        <TextBlock Text="Журнал подключения" FontSize="13" FontWeight="Medium"
+                                   Foreground="#A3A8B2" VerticalAlignment="Center"/>
+                        <PathIcon Grid.Column="1" Classes="chevron" Width="12" Height="12" VerticalAlignment="Center"
+                                  Data="{markup:IconGeometry Icon=caret_down, IconType=regular}"/>
+                    </Grid>
+                </Border>
 
-                </TextBlock>
-            </Border>
-        </Grid>
-        
+                <Border x:Name="LogBody" IsVisible="False" Height="112"
+                        BorderBrush="#12FFFFFF" BorderThickness="0,1,0,0" Padding="16,10">
+                    
+                    <ScrollViewer x:Name="LogScrollViewer">
+                        <SelectableTextBlock Text="{Binding LogText}"
+                                             Foreground="#A3A8B2"
+                                             FontFamily="Cascadia Mono, Consolas, monospace"
+                                             FontSize="11.5"
+                                             TextWrapping="Wrap"
+                                             VerticalAlignment="Top"
+                                             HorizontalAlignment="Left"/>
+                    </ScrollViewer>
+                </Border>
+            </StackPanel>
+        </Border>
+
     </Grid>
 </UserControl>
