@@ -7,15 +7,15 @@
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="Jammer_desktop.Views.MainWindow"
         x:DataType="vm:MainViewModel"
-        Height="535"
+        Height="560"
         Width="350"
-        Background="#121418"
+        Background="Transparent"
+        TransparencyLevelHint="Transparent"
+        WindowDecorations="None"
         CanResize="False"
         Icon="/Assets/jammer-vpn-dark.ico"
         Title="JammerVPN"
-        Foreground="#6E747F"
-        ExtendClientAreaToDecorationsHint="True"
-        ExtendClientAreaTitleBarHeightHint="32">
+        Foreground="#6E747F">
 
     <Design.DataContext>
         <!-- This only sets the DataContext for the previewer in an IDE,
@@ -32,15 +32,57 @@
         <SolidColorBrush x:Key="ButtonBorderBrushPressed" Color="#21FFFFFF"/>
     </Window.Resources>
 
+    <!-- Системное скругленное кастомное окно -->
+    <Border CornerRadius="16" Background="#121418"
+            BorderBrush="#12FFFFFF" BorderThickness="1" ClipToBounds="True">
     <Grid RowDefinitions="*,50,150,70">
-        
+
         <ContentControl Grid.Row="0" Grid.RowSpan="3" Content="{Binding CurrentPage}" />
 
+        <!-- своя шапка, кнопки свернуть и закрыть -->
+        <Grid Grid.Row="0" Grid.RowSpan="4" Height="32" VerticalAlignment="Top"
+              ColumnDefinitions="*,Auto">
+            <Border x:Name="TitleDragArea" Grid.ColumnSpan="2" Background="Transparent"
+                    PointerPressed="TitleDragArea_OnPointerPressed"/>
+            <TextBlock Text="JammerVPN" FontSize="12" FontWeight="Medium" Margin="18,0,0,0"
+                       VerticalAlignment="Center" IsHitTestVisible="False"/>
+
+            <StackPanel Grid.Column="1" Orientation="Horizontal" Margin="0,0,0,0" Spacing="2">
+                <Button Width="50" Height="32" Padding="0" CornerRadius="0,0, 5,5" VerticalAlignment="Center"
+                        Background="Transparent" BorderBrush="Transparent" Cursor="Hand"
+                        Click="MinimizeButton_OnClick">
+                    <Button.Resources>
+                        <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="#1E2127"/>
+                        <SolidColorBrush x:Key="ButtonBackgroundPressed" Color="#171A1F"/>
+                        <SolidColorBrush x:Key="ButtonBorderBrushPointerOver" Color="Transparent"/>
+                        <SolidColorBrush x:Key="ButtonBorderBrushPressed" Color="Transparent"/>
+                        <SolidColorBrush x:Key="ButtonForegroundPointerOver" Color="#ECEEF2"/>
+                    </Button.Resources>
+                    <PathIcon Width="10" Height="10" Data="{pia:IconGeometry Icon=minus, IconType=bold}"/>
+                </Button>
+                <Button Width="50" Height="32" Padding="0" CornerRadius="0,16,0,5" VerticalAlignment="Center"
+                        Background="Transparent" BorderBrush="Transparent" Cursor="Hand"
+                        Click="CloseButton_OnClick">
+                    <Button.Resources>
+                        <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="#E5484D"/>
+                        <SolidColorBrush x:Key="ButtonBackgroundPressed" Color="#C93B40"/>
+                        <SolidColorBrush x:Key="ButtonBorderBrushPointerOver" Color="Transparent"/>
+                        <SolidColorBrush x:Key="ButtonBorderBrushPressed" Color="Transparent"/>
+                        <SolidColorBrush x:Key="ButtonForegroundPointerOver" Color="#FFFFFF"/>
+                    </Button.Resources>
+                    <PathIcon Width="10" Height="10" Data="{pia:IconGeometry Icon=x, IconType=bold}"/>
+                </Button>
+            </StackPanel>
+        </Grid>
+
+        
+        <!-- Контейнер для кнопок навигации(домашняя страница и страница настроек) -->
         <Grid Grid.Row="3">
             <Border Background="#0E1013"
                     BorderBrush="#12FFFFFF"
                     BorderThickness="1"
-                    CornerRadius="15, 15, 0, 0">
+                    CornerRadius="12"
+                    Margin="20,0,20,15">
                 <UniformGrid Columns="2" >
 
 
@@ -98,6 +140,7 @@
         </Grid>
 
     </Grid>
+    </Border>
 
 
 </Window>

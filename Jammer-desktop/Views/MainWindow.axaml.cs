@@ -16,6 +16,17 @@ public partial class MainWindow : Window
     }
     
 
+    // шапка
+    private void TitleDragArea_OnPointerPressed(object? sender, Avalonia.Input.PointerPressedEventArgs e)
+    {
+        if (e.GetCurrentPoint(this).Properties.IsLeftButtonPressed)
+            BeginMoveDrag(e);
+    }
+
+    private void MinimizeButton_OnClick(object? sender, RoutedEventArgs e) => WindowState = WindowState.Minimized;
+
+    private void CloseButton_OnClick(object? sender, RoutedEventArgs e) => Close();
+
     private void HomeButton_OnClick(object? sender, RoutedEventArgs e)
     {
         HomeIcon.Foreground = new SolidColorBrush(Color.Parse("#C9444A"));
