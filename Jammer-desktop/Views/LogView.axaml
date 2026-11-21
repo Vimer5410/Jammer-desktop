@@ -3,6 +3,8 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:markup="clr-namespace:PhosphorIconsAvalonia.Markup;assembly=PhosphorIconsAvalonia"
+             xmlns:views="clr-namespace:Jammer_desktop.Views"
+             xmlns:vm="clr-namespace:Jammer_desktop.ViewModels"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="Jammer_desktop.Views.LogView">
     
@@ -34,7 +36,7 @@
     
     <Grid RowDefinitions="70, Auto" Margin="0, 30,0,0">
     
-        <!-- Контейнер верхней кнопки Self-Hosted для возврата на предыдущую страницу -->
+        <!-- Контейнер верхней кнопки Logs для возврата на предыдущую страницу -->
         <Grid Grid.Row="0">
             <Button Grid.Row="0" BorderBrush="Transparent"
                     Height="50" Width="175" Margin="20,0,0,0"
@@ -42,7 +44,7 @@
                     Cursor="hand" Background="Transparent"
                     CornerRadius="8"
                     Padding="0"
-                    Click="BackButton_OnClick">
+                    Command="{Binding $parent[views:SettingsView].((vm:SettingsViewModel)DataContext).RouteBack}">
             
                 <Button.Resources>
                     <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="Transparent"/>

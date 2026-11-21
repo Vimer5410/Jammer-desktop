@@ -23,14 +23,7 @@ public partial class SelfHostedView : UserControl
         GuiLogSink.OnLog += (_, _) =>
             Dispatcher.UIThread.Post(() => LogScrollViewer.ScrollToEnd(), DispatcherPriority.Background);
     }
-
-    private void BackButton_OnClick(object? sender, RoutedEventArgs e)
-    {
-        var settingsView = this.FindAncestorOfType<SettingsView>();
-        var settingsViewModel = (SettingsViewModel)settingsView.DataContext;
-        
-        settingsViewModel.RouteBack();
-    }
+    
 
     private async void InstallServerButton_OnClick(object? sender, RoutedEventArgs e)
     {

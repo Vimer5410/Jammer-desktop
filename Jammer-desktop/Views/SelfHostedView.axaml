@@ -6,6 +6,7 @@
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="Jammer_desktop.Views.SelfHostedView"
              xmlns:vm="using:Jammer_desktop.ViewModels"
+             xmlns:views="clr-namespace:Jammer_desktop.Views"
              x:DataType="vm:SelfHostedViewModel">
     
     
@@ -61,7 +62,7 @@
                     Cursor="hand" Background="Transparent"
                     CornerRadius="8"
                     Padding="0"
-                    Click="BackButton_OnClick">
+                    Command="{Binding $parent[views:SettingsView].((vm:SettingsViewModel)DataContext).RouteBack}">
             
                 <Button.Resources>
                     <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="Transparent"/>

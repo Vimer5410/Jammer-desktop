@@ -13,12 +13,4 @@ public partial class GeneralView : UserControl
     {
         InitializeComponent();
     }
-
-    private void BackButton_OnClick(object? sender, RoutedEventArgs e)
-    {
-        var settingsView = this.FindAncestorOfType<SettingsView>();
-        var settingsViewModel = (SettingsViewModel)settingsView.DataContext;
-        
-        settingsViewModel.RouteBack();
-    }
 }
