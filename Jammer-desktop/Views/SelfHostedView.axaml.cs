@@ -5,6 +5,7 @@ using Avalonia.Controls;
 using Avalonia.Input;
 using Avalonia.Interactivity;
 using Avalonia.Markup.Xaml;
+using Avalonia.Threading;
 using Jammer_desktop.ViewModels;
 using Avalonia.VisualTree;
 using Jammer.Core;
@@ -18,6 +19,9 @@ public partial class SelfHostedView : UserControl
     public SelfHostedView()
     {
         InitializeComponent();
+        
+        GuiLogSink.OnLog += (_, _) =>
+            Dispatcher.UIThread.Post(() => LogScrollViewer.ScrollToEnd(), DispatcherPriority.Background);
     }
 
     private void BackButton_OnClick(object? sender, RoutedEventArgs e)
@@ -28,8 +32,11 @@ public partial class SelfHostedView : UserControl
         settingsViewModel.RouteBack();
     }
 
-    private async void Button_OnClick(object? sender, RoutedEventArgs e)
+    private async void InstallServerButton_OnClick(object? sender, RoutedEventArgs e)
     {
+        InstallButton.IsEnabled = false;
+        InstallButton.Content = "Установка...";
+        
         var selfHostedViewModel = (SelfHostedViewModel)DataContext;
         selfHostedViewModel._logText = "";
         
@@ -47,5 +54,23 @@ public partial class SelfHostedView : UserControl
         {
             Log.ForContext("SourceContext", "SshService").Error("{error}", ex.Message);
         }
+        finally
+        {
+            InstallButton.IsEnabled = true;
+            InstallButton.Content = "Установить";
+        }
+    }
+
+    private void ShowPasswordButton_OnIsCheckedChanged(object? sender, RoutedEventArgs e)
+    {
+        if (ShowPasswordButton.IsChecked ?? false)
+        {
+            PasswordTextBox.PasswordChar = '\0';
+        }
+        else
+        {
+            PasswordTextBox.PasswordChar = '*';
+        }
+        
     }
 }

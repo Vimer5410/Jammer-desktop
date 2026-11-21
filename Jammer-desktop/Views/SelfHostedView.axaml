@@ -13,6 +13,18 @@
         <Style Selector="Button:pressed PathIcon.caret">
             <Setter Property="Foreground" Value="#C9444A"/>
         </Style>
+        
+        <Style Selector="PathIcon.eye">
+            <Setter Property="Data" Value="{pia:IconGeometry Icon=eye_slash, IconType=regular}"/>
+            <Setter Property="Foreground" Value="#6E747F"/>
+        </Style>
+        <Style Selector="ToggleButton:pointerover PathIcon.eye">
+            <Setter Property="Foreground" Value="#ECEEF2"/>
+        </Style>
+        <Style Selector="ToggleButton:checked PathIcon.eye">
+            <Setter Property="Data" Value="{pia:IconGeometry Icon=eye, IconType=regular}"/>
+            <Setter Property="Foreground" Value="#C9444A"/>
+        </Style>
     </UserControl.Styles>
     
     
@@ -85,6 +97,22 @@
             
             <TextBlock Grid.Column="1" FontFamily="Cascadia Mono, Consolas, monospace" Text="Пароль"></TextBlock>
             <TextBox PasswordChar="*" Grid.Column="1" x:Name="PasswordTextBox" FontFamily="Cascadia Mono, Consolas, monospace" Height="45" CornerRadius="10" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"></TextBox>
+            
+            <ToggleButton Grid.Column="1" x:Name="ShowPasswordButton" Background="Transparent" HorizontalAlignment="Right" Cursor="Hand" IsCheckedChanged="ShowPasswordButton_OnIsCheckedChanged">
+                <ToggleButton.Resources>
+                    <SolidColorBrush x:Key="ToggleButtonBackground" Color="Transparent"/>
+                    <SolidColorBrush x:Key="ToggleButtonBackgroundPointerOver" Color="Transparent"/>
+                    <SolidColorBrush x:Key="ToggleButtonBackgroundPressed" Color="Transparent"/>
+                    <SolidColorBrush x:Key="ToggleButtonBackgroundChecked" Color="Transparent"/>
+                    <SolidColorBrush x:Key="ToggleButtonBackgroundCheckedPointerOver" Color="Transparent"/>
+                    <SolidColorBrush x:Key="ToggleButtonBackgroundCheckedPressed" Color="Transparent"/>
+                    <SolidColorBrush x:Key="ToggleButtonBorderBrushChecked" Color="Transparent"/>
+                    <SolidColorBrush x:Key="ToggleButtonBorderBrushCheckedPointerOver" Color="Transparent"/>
+                    <SolidColorBrush x:Key="ToggleButtonBorderBrushCheckedPressed" Color="Transparent"/>
+                </ToggleButton.Resources>
+                
+                <PathIcon Classes="eye"/>
+            </ToggleButton>
         </Grid>
         
         
@@ -98,7 +126,9 @@
                     FontWeight="SemiBold"
                     BorderBrush="Transparent"
                     BorderThickness="0"
-                    Click="Button_OnClick">
+                    x:Name="InstallButton"
+                    Cursor="Hand"
+                    Click="InstallServerButton_OnClick">
                 
                 <Button.Resources>
                     <SolidColorBrush x:Key="ButtonBackground" Color="#C9444A"/>
@@ -111,22 +141,25 @@
         
         
         <!-- Контейнер для вывода информации об установке -->
-        <Grid Grid.Row="4">
-            <Border Background="#0E1013"
-                    BorderBrush="#12FFFFFF"
+        <Grid Grid.Row="4" Margin="20,0,20,0">
+            <Border BorderBrush="#12FFFFFF"
+                    Background="#171A1F" 
                     BorderThickness="1"
-                    CornerRadius="0,0,15,15"
-                    Margin="0,25,0,6"
+                    CornerRadius="10"
+                    Margin="0,20,0,10"
                     Padding="12,8">
-                <TextBlock Text="{Binding LogText}"
-                           Foreground="#A3A8B2"
-                           FontFamily="Cascadia Mono, Consolas, monospace"
-                           FontSize="12"
-                           TextWrapping="Wrap"
-                           VerticalAlignment="Top"
-                           HorizontalAlignment="Left">
+                
+                <ScrollViewer x:Name="LogScrollViewer">
+                    <TextBlock Text="{Binding LogText}"
+                               Foreground="#A3A8B2"
+                               FontFamily="Cascadia Mono, Consolas, monospace"
+                               FontSize="12"
+                               TextWrapping="Wrap"
+                               VerticalAlignment="Top"
+                               HorizontalAlignment="Left">
 
-                </TextBlock>
+                    </TextBlock>     
+                </ScrollViewer>
             </Border>
         </Grid>
     </Grid>
