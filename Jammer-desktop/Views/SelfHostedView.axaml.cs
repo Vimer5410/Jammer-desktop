@@ -10,7 +10,6 @@ using Jammer_desktop.ViewModels;
 using Avalonia.VisualTree;
 using Jammer.Core;
 using Jammer.Deploy;
-using Serilog;
 
 namespace Jammer_desktop.Views;
 
@@ -19,40 +18,25 @@ public partial class SelfHostedView : UserControl
     public SelfHostedView()
     {
         InitializeComponent();
-        
-        GuiLogSink.OnLog += (_, _) =>
-            Dispatcher.UIThread.Post(() => LogScrollViewer.ScrollToEnd(), DispatcherPriority.Background);
     }
-    
 
-    private async void InstallServerButton_OnClick(object? sender, RoutedEventArgs e)
+    protected override void OnAttachedToVisualTree(VisualTreeAttachmentEventArgs e)
     {
-        InstallButton.IsEnabled = false;
-        InstallButton.Content = "Установка...";
-        
-        var selfHostedViewModel = (SelfHostedViewModel)DataContext;
-        selfHostedViewModel._logText = "";
-        
-        string ip = IpTextBox.Text;
-        string login = LoginTextBox.Text;
-        string password = PasswordTextBox.Text;
-        
-        int.TryParse(SshPortTextBox.Text, out var port);
-        
-        try
-        {
-            await Task.Run(() =>  SshService.DeploySelfHosted(ip, port, login, password));
-        }
-        catch (Exception ex)
-        {
-            Log.ForContext("SourceContext", "SshService").Error("{error}", ex.Message);
-        }
-        finally
-        {
-            InstallButton.IsEnabled = true;
-            InstallButton.Content = "Установить";
-        }
+        base.OnAttachedToVisualTree(e);
+        GuiLogSink.OnLog += ScrollLogToEnd;
     }
+
+    protected override void OnDetachedFromVisualTree(VisualTreeAttachmentEventArgs e)
+    {
+        GuiLogSink.OnLog -= ScrollLogToEnd;
+        base.OnDetachedFromVisualTree(e);
+    }
+
+    private void ScrollLogToEnd(string source, string line)
+    {
+        Dispatcher.UIThread.Post(() => LogScrollViewer.ScrollToEnd(), DispatcherPriority.Background);
+    }
+
 
     private void ShowPasswordButton_OnIsCheckedChanged(object? sender, RoutedEventArgs e)
     {

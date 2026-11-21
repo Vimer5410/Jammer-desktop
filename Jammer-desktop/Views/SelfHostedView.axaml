@@ -83,10 +83,10 @@
         <!-- Контейнер с двумя полями ввода(ip адрес и ssh порт) -->
         <Grid Grid.Row="1" ColumnDefinitions="*, Auto" Margin="20,0,20,0" ColumnSpacing="20">
             <TextBlock Grid.Column="0" FontFamily="Cascadia Mono, Consolas, monospace" Text="Ip-адрес сервера"></TextBlock>
-            <TextBox Grid.Column="0" x:Name="IpTextBox" FontFamily="Cascadia Mono, Consolas, monospace" Height="45" CornerRadius="10" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"></TextBox>
+            <TextBox Grid.Column="0" Text="{Binding Ip}" FontFamily="Cascadia Mono, Consolas, monospace" Height="45" CornerRadius="10" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"></TextBox>
             
             <TextBlock Grid.Column="1" FontFamily="Cascadia Mono, Consolas, monospace" Text="SSH port"></TextBlock>
-            <TextBox Grid.Column="1" x:Name="SshPortTextBox" FontFamily="Cascadia Mono, Consolas, monospace" Height="45" CornerRadius="10" Text="22" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"></TextBox>
+            <TextBox Grid.Column="1" Text="{Binding Port}" FontFamily="Cascadia Mono, Consolas, monospace" Height="45" CornerRadius="10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"></TextBox>
         </Grid>
         
         
@@ -94,10 +94,10 @@
         <!-- Контейнер с двумя полями ввода(логин и пароль) -->
         <Grid Grid.Row="2" ColumnDefinitions="Auto, *" Margin="20,0,20,0" ColumnSpacing="20">
             <TextBlock Grid.Column="0" FontFamily="Cascadia Mono, Consolas, monospace" Text="Логин"></TextBlock>
-            <TextBox Grid.Column="0" x:Name="LoginTextBox" FontFamily="Cascadia Mono, Consolas, monospace" Height="45" Width="80" CornerRadius="10" Text="root" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"></TextBox>
+            <TextBox Grid.Column="0" Text="{Binding Login}" FontFamily="Cascadia Mono, Consolas, monospace" Height="45" Width="80" CornerRadius="10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"></TextBox>
             
             <TextBlock Grid.Column="1" FontFamily="Cascadia Mono, Consolas, monospace" Text="Пароль"></TextBlock>
-            <TextBox PasswordChar="*" Grid.Column="1" x:Name="PasswordTextBox" FontFamily="Cascadia Mono, Consolas, monospace" Height="45" CornerRadius="10" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"></TextBox>
+            <TextBox PasswordChar="*" x:Name="PasswordTextBox" Grid.Column="1" Text="{Binding Password}" FontFamily="Cascadia Mono, Consolas, monospace" Height="45" CornerRadius="10" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"></TextBox>
             
             <ToggleButton Grid.Column="1" x:Name="ShowPasswordButton" Background="Transparent" HorizontalAlignment="Right" Cursor="Hand" IsCheckedChanged="ShowPasswordButton_OnIsCheckedChanged">
                 <ToggleButton.Resources>
@@ -120,16 +120,15 @@
         
         <!-- Контейнер для кнопки Установить -->
         <Grid Grid.Row="3">
-            <Button Content="Установить" Width="310" Height="50"
+            <Button Content="{Binding InstallBtnContent}" Width="310" Height="50"
                     HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
                     VerticalAlignment="Top" HorizontalAlignment="Center"
                     CornerRadius="12"
                     FontWeight="SemiBold"
                     BorderBrush="Transparent"
                     BorderThickness="0"
-                    x:Name="InstallButton"
                     Cursor="Hand"
-                    Click="InstallServerButton_OnClick">
+                    Command="{Binding InstallServerCommand}">
                 
                 <Button.Resources>
                     <SolidColorBrush x:Key="ButtonBackground" Color="#C9444A"/>
