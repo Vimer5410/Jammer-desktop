@@ -28,6 +28,27 @@
             <Setter Property="BorderBrush" Value="#21FFFFFF"/>
         </Style>
     </UserControl.Styles>
+    
+    
+    
+    <UserControl.Styles>
+        <Style Selector="ComboBox /template/ PathIcon">
+            <Setter Property="RenderTransform" Value="rotate(0deg)"/>
+            <Setter Property="Transitions">
+                <Transitions>
+                    <TransformOperationsTransition Property="RenderTransform" Duration="0:0:0.15" Easing="CubicEaseInOut"/>
+                </Transitions>
+            </Setter>
+        </Style>
+        <Style Selector="ComboBox:dropdownopen /template/ PathIcon">
+            <Setter Property="RenderTransform" Value="rotate(180deg)"/>
+        </Style>
+        <Style Selector="Border.serverlistcard:pointerover">
+            <Setter Property="BorderBrush" Value="#21FFFFFF"/>
+        </Style>
+    </UserControl.Styles>
+    
+    
 
     <Grid RowDefinitions="216,Auto,*">
 
@@ -95,7 +116,7 @@
         <!--контейнер списка выбора сервера -->
         <Grid Grid.Row="1" ColumnDefinitions="*,Auto"
               Margin="20,40,20,0"
-              VerticalAlignment="Center">
+              VerticalAlignment="Center" Classes="serverlistcard">
 
             <ComboBox x:Name="ServerComboBox"
                       Grid.Column="0"

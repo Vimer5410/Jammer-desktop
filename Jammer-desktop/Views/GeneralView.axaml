@@ -6,7 +6,8 @@
              xmlns:vm="clr-namespace:Jammer_desktop.ViewModels"
              xmlns:views="clr-namespace:Jammer_desktop.Views"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-             x:Class="Jammer_desktop.Views.GeneralView">
+             x:Class="Jammer_desktop.Views.GeneralView"
+             x:DataType="vm:GeneralViewModel">
     
     <UserControl.Styles>
         
@@ -21,6 +22,24 @@
         
         <Style Selector="Button:pressed PathIcon.caret">
             <Setter Property="Foreground" Value="#C9444A"/>
+        </Style>
+    </UserControl.Styles>
+    
+    
+    <UserControl.Styles>
+        <Style Selector="ComboBox /template/ PathIcon">
+            <Setter Property="RenderTransform" Value="rotate(0deg)"/>
+            <Setter Property="Transitions">
+                <Transitions>
+                    <TransformOperationsTransition Property="RenderTransform" Duration="0:0:0.15" Easing="CubicEaseInOut"/>
+                </Transitions>
+            </Setter>
+        </Style>
+        <Style Selector="ComboBox:dropdownopen /template/ PathIcon">
+            <Setter Property="RenderTransform" Value="rotate(180deg)"/>
+        </Style>
+        <Style Selector="Border.languagecard:pointerover">
+            <Setter Property="BorderBrush" Value="#21FFFFFF"/>
         </Style>
     </UserControl.Styles>
     
@@ -76,6 +95,8 @@
         </Grid>
         
         
+        
+        
         <Border Grid.Row="1" Height="64" CornerRadius="8" Margin="20,0,20,0"
                 Background="#171A1F" BorderBrush="#12FFFFFF" BorderThickness="1" Padding="16,0">
             
@@ -89,11 +110,13 @@
                                FontSize="12" Foreground="#A3A8B2"/>
                 </StackPanel>
                 
-                <ToggleSwitch Grid.Column="1" IsChecked="False" Cursor="hand"
+                <ToggleSwitch Grid.Column="1" IsChecked="{Binding StartWithWindowsEnable}" Cursor="hand"
                               OnContent="" OffContent="" MinWidth="0" Padding="0"
                               VerticalAlignment="Center" Margin="0,0,-12,0"/>
             </Grid>
         </Border>
+        
+        
         
         
         <Border Grid.Row="2" Height="64" CornerRadius="8" Margin="20,0,20,0"
@@ -109,11 +132,13 @@
                                FontSize="12" Foreground="#A3A8B2"/>
                 </StackPanel>
                 
-                <ToggleSwitch Grid.Column="1" IsChecked="False" Cursor="hand"
+                <ToggleSwitch Grid.Column="1" IsChecked="{Binding RollTrayEnable}" Cursor="hand"
                               OnContent="" OffContent="" MinWidth="0" Padding="0"
                               VerticalAlignment="Center" Margin="0,0,-12,0"/>
             </Grid>
         </Border>
+        
+        
         
         
         <Border Grid.Row="3" Height="64" CornerRadius="8" Margin="20,0,20,0"
@@ -129,31 +154,63 @@
                                FontSize="12" Foreground="#A3A8B2"/>
                 </StackPanel>
                 
-                <ToggleSwitch Grid.Column="1" IsChecked="False" Cursor="hand"
+                <ToggleSwitch Grid.Column="1" IsChecked="{Binding WriteLogsEnable}" Cursor="hand"
                               OnContent="" OffContent="" MinWidth="0" Padding="0"
                               VerticalAlignment="Center" Margin="0,0,-12,0"/>
             </Grid>
         </Border>
         
+        
+        
+        
         <Border Grid.Row="4" Height="64" CornerRadius="8" Margin="20,0,20,0"
-                Background="#171A1F" BorderBrush="#12FFFFFF" BorderThickness="1" Padding="16,0">
-            
+                Background="#171A1F" BorderBrush="#12FFFFFF" BorderThickness="1" Padding="16,0, 7, 0" Classes="languagecard">
+
             <Grid ColumnDefinitions="*,Auto">
-                
+
                 <StackPanel VerticalAlignment="Center" Spacing="2">
                     <TextBlock Text="Язык"
                                FontSize="15" FontWeight="Medium" Foreground="#ECEEF2"/>
-                    
+
                     <TextBlock Text="Язык работы приложения"
                                FontSize="12" Foreground="#A3A8B2"/>
                 </StackPanel>
+
                 
-                <ComboBox Grid.Column="1" Width="40" Height="20" Foreground="#6E747F"  Background="#0E1013" BorderBrush="#12FFFFFF" >
-                    <ComboBoxItem Content="Русский"></ComboBoxItem>
-                    <ComboBoxItem Content="English"></ComboBoxItem>
+                <ComboBox Grid.Column="1"
+                          Width="100" Height="32" MinHeight="0"
+                          HorizontalAlignment="Right" VerticalAlignment="Center"
+                          CornerRadius="8" BorderThickness="1"
+                          Padding="12,0,0,0" FontSize="13"
+                          VerticalContentAlignment="Center"
+                          Cursor="Hand" SelectedIndex="{Binding LanguageSelectedIndex}">
                     
+                    <ComboBoxItem Content="Русский"/>
+                    <ComboBoxItem Content="English"/>
+
                     <ComboBox.Resources>
-                        <SolidColorBrush x:Key=""></SolidColorBrush>
+                        <!-- Поле -->
+                        <SolidColorBrush x:Key="ComboBoxBackground" Color="#0E1013"/>
+                        <SolidColorBrush x:Key="ComboBoxBackgroundPointerOver" Color="#0E1013"/>
+                        <SolidColorBrush x:Key="ComboBoxBackgroundPressed" Color="#0E1013"/>
+                        <SolidColorBrush x:Key="ComboBoxBorderBrush" Color="#21FFFFFF"/>
+                        <SolidColorBrush x:Key="ComboBoxBorderBrushPointerOver" Color="#40FFFFFF"/>
+                        <SolidColorBrush x:Key="ComboBoxBorderBrushPressed" Color="#40FFFFFF"/>
+                        <SolidColorBrush x:Key="ComboBoxForeground" Color="#A3A8B2"/>
+                        <SolidColorBrush x:Key="ComboBoxForegroundPointerOver" Color="#ECEEF2"/>
+                        <SolidColorBrush x:Key="ComboBoxDropDownGlyphForeground" Color="#6E747F"/>
+
+                        <!-- Выпадающая часть и пункты -->
+                        <SolidColorBrush x:Key="ComboBoxDropDownBackground" Color="#171A1F"/>
+                        <SolidColorBrush x:Key="ComboBoxDropDownBorderBrush" Color="#21FFFFFF"/>
+                        <SolidColorBrush x:Key="ComboBoxItemForeground" Color="#A3A8B2"/>
+                        <SolidColorBrush x:Key="ComboBoxItemForegroundPointerOver" Color="#ECEEF2"/>
+                        <SolidColorBrush x:Key="ComboBoxItemForegroundSelected" Color="#ECEEF2"/>
+                        <SolidColorBrush x:Key="ComboBoxItemForegroundSelectedPointerOver" Color="#ECEEF2"/>
+                        <SolidColorBrush x:Key="ComboBoxItemBackgroundPointerOver" Color="#1E2127"/>
+                        <SolidColorBrush x:Key="ComboBoxItemBackgroundPressed" Color="#252930"/>
+                        <SolidColorBrush x:Key="ComboBoxItemBackgroundSelected" Color="#252930"/>
+                        <SolidColorBrush x:Key="ComboBoxItemBackgroundSelectedPointerOver" Color="#2A2E36"/>
                     </ComboBox.Resources>
                 </ComboBox>
             </Grid>
