@@ -60,12 +60,14 @@ public partial class HomeView : UserControl
         
         if (File.Exists(ipFilePath))
         {
-            ServerIpTextBox.Text = File.ReadAllText(ipFilePath);
+            ServerComboBox.Items.Add(File.ReadAllText(ipFilePath));
         }
         else
         {
             Directory.CreateDirectory(Path.GetDirectoryName(ipFilePath));
         }
+
+        ServerComboBox.SelectedIndex = 0;
 
         // консоль сама прокручивается к последней строке
         GuiLogSink.OnLog += (_, _) =>
@@ -78,7 +80,7 @@ public partial class HomeView : UserControl
 
         if (!isConnected)
         {
-            serverIp = ServerIpTextBox.Text;
+            serverIp = (string)ServerComboBox.SelectedItem;
             File.WriteAllText(ipFilePath, serverIp);
         
             var homeviewmodel = (HomeViewModel)DataContext;

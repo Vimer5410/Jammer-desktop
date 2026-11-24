@@ -29,7 +29,7 @@
         </Style>
     </UserControl.Styles>
 
-    <Grid RowDefinitions="216,70,*">
+    <Grid RowDefinitions="216,Auto,*">
 
         <Grid Grid.Row="0">
             <Grid x:Name="RingHost" Classes="ring" Width="140" Height="140" Margin="0,80,0,0"
@@ -91,47 +91,84 @@
 
         </Grid>
 
-        <Grid Grid.Row="1">
-            <TextBox x:Name="ServerIpTextBox"
-                     Text="77.221.140.145"
-                     Width="220"
-                     Height="40"
-                     Margin="0,35,0,0"
-                     CornerRadius="12"
-                     FontFamily="Cascadia Mono, Consolas, monospace"
-                     HorizontalContentAlignment="Center"
-                     VerticalContentAlignment="Center"
-                     HorizontalAlignment="Center"
-                     VerticalAlignment="Center">
-                <TextBox.Resources>
+        
+        <!--контейнер списка выбора сервера -->
+        <Grid Grid.Row="1" ColumnDefinitions="*,Auto"
+              Margin="20,40,20,0"
+              VerticalAlignment="Center">
 
-                    <!-- Фон обычный, при наведении и в фокусе -->
-                    <SolidColorBrush x:Key="TextControlBackground" Color="#0E1013"></SolidColorBrush>
-                    <SolidColorBrush x:Key="TextControlBackgroundPointerOver" Color="#0E1013"></SolidColorBrush>
-                    <SolidColorBrush x:Key="TextControlBackgroundFocused" Color="#0E1013"></SolidColorBrush>
+            <ComboBox x:Name="ServerComboBox"
+                      Grid.Column="0"
+                      Height="44"
+                      HorizontalAlignment="Stretch"
+                      CornerRadius="12"
+                      BorderThickness="1"
+                      Padding="16,0,0,0"
+                      FontSize="14"
+                      VerticalContentAlignment="Center">
+                
+                <ComboBox.Resources>
+                    
+                    <SolidColorBrush x:Key="ComboBoxBackground" Color="#0E1013"/>
+                    <SolidColorBrush x:Key="ComboBoxBackgroundPointerOver" Color="#0E1013"/>
+                    <SolidColorBrush x:Key="ComboBoxBackgroundPressed" Color="#0E1013"/>
+                    <SolidColorBrush x:Key="ComboBoxBackgroundFocused" Color="#0E1013"/>
 
+                   
+                    <SolidColorBrush x:Key="ComboBoxBorderBrush" Color="#2EFFFFFF"/>
+                    <SolidColorBrush x:Key="ComboBoxBorderBrushPointerOver" Color="#40FFFFFF"/>
+                    <SolidColorBrush x:Key="ComboBoxBorderBrushPressed" Color="#40FFFFFF"/>
+                    <SolidColorBrush x:Key="ComboBoxBorderBrushFocused" Color="#40FFFFFF"/>
 
-                    <!-- Рамка обычная, при наведении и в фокусе -->
-                    <SolidColorBrush x:Key="TextControlBorderBrush" Color="#12FFFFFF"></SolidColorBrush>
-                    <SolidColorBrush x:Key="TextControlBorderBrushPointerOver" Color="#21FFFFFF"></SolidColorBrush>
-                    <SolidColorBrush x:Key="TextControlBorderBrushFocused" Color="#C9444A"></SolidColorBrush>
+                    
+                    <SolidColorBrush x:Key="ComboBoxForeground" Color="#A3A8B2"/>
+                    <SolidColorBrush x:Key="ComboBoxForegroundPointerOver" Color="#ECEEF2"/>
+                    <SolidColorBrush x:Key="ComboBoxDropDownGlyphForeground" Color="#6E747F"/>
 
+                    
+                    <SolidColorBrush x:Key="ComboBoxDropDownBackground" Color="#171A1F"/>
+                    <SolidColorBrush x:Key="ComboBoxDropDownBorderBrush" Color="#12FFFFFF"/>
+                </ComboBox.Resources>
+            </ComboBox>
 
-                    <!-- Текст обычный, при наведении и в фокусе -->
-                    <SolidColorBrush x:Key="TextControlForeground" Color="#ECEEF2"></SolidColorBrush>
-                    <SolidColorBrush x:Key="TextControlForegroundPointerOver" Color="#ECEEF2"></SolidColorBrush>
-                    <SolidColorBrush x:Key="TextControlForegroundFocused" Color="#FFFFFF"></SolidColorBrush>
+            
+            
+            
+            <Button x:Name="AddServerButton"
+                    Grid.Column="1"
+                    Margin="10,0,0,0"
+                    Width="44"
+                    Height="44"
+                    Padding="0"
+                    CornerRadius="12"
+                    BorderThickness="0"
+                    Cursor="Hand"
+                    HorizontalContentAlignment="Center"
+                    VerticalContentAlignment="Center">
+                <PathIcon Width="13" Height="13"
+                          Data="{markup:IconGeometry Icon=plus, IconType=regular}"/>
 
+                
+                <Button.Resources>
+                    <SolidColorBrush x:Key="ButtonBackground" Color="#1E2127"/>
+                    <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="#2D3037"/>
+                    <SolidColorBrush x:Key="ButtonBackgroundPressed" Color="#1E2025"/>
 
-                </TextBox.Resources>
-            </TextBox>
+                    <SolidColorBrush x:Key="ButtonBorderBrush" Color="Transparent"/>
+                    <SolidColorBrush x:Key="ButtonBorderBrushPointerOver" Color="Transparent"/>
+                    <SolidColorBrush x:Key="ButtonBorderBrushPressed" Color="Transparent"/>
 
+                    <SolidColorBrush x:Key="ButtonForeground" Color="#ECEEF2"/>
+                    <SolidColorBrush x:Key="ButtonForegroundPointerOver" Color="#FFFFFF"/>
+                    <SolidColorBrush x:Key="ButtonForegroundPressed" Color="#FFFFFF"/>
+                </Button.Resources>
+            </Button>
         </Grid>
 
-        <!-- Сворачиваемая плашка консоли: заголовок со стрелкой, под ним вывод -->
+        <!-- Сворачиваемая плашка консоли -->
         <Border Grid.Row="2" x:Name="LogCard" Classes="logcard"
                 VerticalAlignment="Top"
-                Margin="20,10,20,0"
+                Margin="20, 10,20,0"
                 CornerRadius="12"
                 Background="#171A1F" BorderBrush="#12FFFFFF" BorderThickness="1"
                 ClipToBounds="True">
